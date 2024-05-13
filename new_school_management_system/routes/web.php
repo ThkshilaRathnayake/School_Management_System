@@ -89,6 +89,7 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
 
 
 Route::middleware(['auth', 'role:student'])->group(function(){
+
     //Student Login Dashboard
     Route::get('/student/dashboard', [StudentController::class, 'StudentDashboard'])
     ->name('student.dashboard');
@@ -96,6 +97,14 @@ Route::middleware(['auth', 'role:student'])->group(function(){
     //Student Logout
     //Route::get('/student/logout', [StudentController::class, 'StudentLogout'])
    //->name('student.logout');
+
+    //Student->Course->Materials
+    Route::get('/student/courseMaterials', [StudentController::class, 'CourseMaterials'])
+    ->name('student.course.material');
+
+    //Student->Course->Assignments
+    Route::get('/student/assignments', [StudentController::class, 'Assignments'])
+    ->name('student.course.assignment');
 
 });
 

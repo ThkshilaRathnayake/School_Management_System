@@ -12,14 +12,6 @@
                 <span class="input-group-text input-group-addon bg-transparent border-primary" data-toggle><i data-feather="calendar" class="text-primary"></i></span>
                 <input type="text" class="form-control bg-transparent border-primary" placeholder="Select date" data-input>
             </div>
-            <button type="button" class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0">
-                <i class="btn-icon-prepend" data-feather="printer"></i>
-                Print
-            </button>
-            <button type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
-                <i class="btn-icon-prepend" data-feather="download-cloud"></i>
-                Download Report
-            </button>
         </div>
     </div>
 
@@ -36,7 +28,7 @@
                                         <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item d-flex align-items-center" href="{{route('student.course.materials')}}"><i data-feather="trash" class="icon-sm me-2"></i>
+                                        <a class="dropdown-item d-flex align-items-center" href="{{route('student.course.material')}}"><i data-feather="trash" class="icon-sm me-2"></i>
                                             <span class="">Course Materials</span>
                                         </a>
                                         <a class="dropdown-item d-flex align-items-center" href="{{route('student.course.assignment')}}"><i data-feather="download" class="icon-sm me-2"></i> 

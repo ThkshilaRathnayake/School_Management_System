@@ -9,6 +9,16 @@ class StudentController extends Controller
 {
     //Student Login Function
     public function StudentDashboard(){
-        return view('student.studentDashboard');
+        return view('student.index');
+    }
+
+    //Student->Course->Materials Function
+    public function CourseMaterials(){
+        return view('student.course.material');
+    }
+
+    //Student->Course->Assignments Function
+    public function Assignments(){
+        return view('student.course.assignment');
     }
 }
