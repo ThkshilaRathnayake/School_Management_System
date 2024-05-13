@@ -125,6 +125,19 @@ Route::middleware(['auth', 'role:teacher'])->group(function(){
     //Teacher Logout
     // Route::get('/teacher/logout', [TeacherController::class, 'TeacherLogout'])
     // ->name('teacher.logout');
+
+    //Teacher->Course->Materials
+    Route::get('/teacher/courseMaterials', [TeacherController::class, 'CourseMaterials'])
+    ->name('teacher.course.material');
+
+    //Teacher->Course->Assignments
+    Route::get('/teacher/assignments', [TeacherController::class, 'Assignments'])
+    ->name('teacher.course.assignment');
+
+    //Teacher->Course->Attendance
+    Route::get('/teacher/attendance', [TeacherController::class, 'Attendance'])
+    ->name('teacher.course.attendance');
+
 });
 
 
