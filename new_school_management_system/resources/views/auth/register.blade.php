@@ -29,6 +29,24 @@
                 <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 
+            <div class="mb-4">
+                <label class="form-label">Role</label>
+                <div>
+                    <input type="radio" class="form-check-input" name="gender_radio" id="gender1">
+                    <label class="form-check-label" for="gender1">
+                      Admin
+                    </label>
+                    <input type="radio" class="form-check-input" name="gender_radio" id="gender2">
+                    <label class="form-check-label" for="gender2">
+                      Teacher
+                    </label>
+                    <input type="radio" class="form-check-input" name="gender_radio" id="gender3">
+                    <label class="form-check-label" for="gender3">
+                      Student
+                    </label>
+                </div>
+            </div>
+
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
                     <x-label for="terms">
