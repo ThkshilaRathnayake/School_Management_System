@@ -22,20 +22,20 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::middleware(['auth', 'role:Admin'])->group(function(){
+Route::middleware(['auth', 'role:admin'])->group(function(){
     //Admin Login Dashboard
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])
-    ->name('admin.adminDashboard');
+    ->name('admin.dashboard');
 
     //Admin Logout
     //Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])
     //->name('admin.logout');
 });
 
-Route::middleware(['auth', 'role:Student'])->group(function(){
+Route::middleware(['auth', 'role:student'])->group(function(){
    //Student Login Dashboard
     Route::get('/student/dashboard', [StudentController::class, 'StudentDashboard'])
-    ->name('student.studentDashboard');
+    ->name('student.dashboard');
 
     //Student Logout
     //Route::get('/student/logout', [StudentController::class, 'StudentLogout'])
@@ -43,10 +43,10 @@ Route::middleware(['auth', 'role:Student'])->group(function(){
 
 });
 
-Route::middleware(['auth', 'role:Teacher'])->group(function(){
+Route::middleware(['auth', 'role:teacher'])->group(function(){
     //Teacher Login Dashboard
     Route::get('/teacher/dashboard', [TeacherController::class, 'TeacherDashboard'])
-    ->name('teacher.teacherDashboard');
+    ->name('teacher.dashboard');
 
     //Teacher Logout
    // Route::get('/teacher/logout', [TeacherController::class, 'TeacherLogout'])

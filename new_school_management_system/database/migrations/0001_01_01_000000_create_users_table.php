@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('role')->default('student');
-            //$table->enum('role', ['Admin','Student','Teacher']);
+            //$table->string('role')->default('student');
+            $table->enum('role', ['admin','student','teacher'])->default('student');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
