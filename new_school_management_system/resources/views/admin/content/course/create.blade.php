@@ -64,7 +64,7 @@
 
                                 <h6 class="card-title">Course Creation Form</h6>
 
-                                <form class="forms-sample" method="POST" action="{{ route('admin.course.courseCreate') }}">
+                                <form class="forms-sample" method="POST" action="{{ route('admin.content.course.create') }}">
                                     @csrf
                                     <div class="mb-3">
                                         <label for="exampleInputUsername1" class="form-label">Course ID</label>

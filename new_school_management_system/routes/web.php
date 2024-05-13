@@ -22,7 +22,17 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+
+
+//#################################################################################################################################################
+
+
+//Admin Middleware
+
+
+
 Route::middleware(['auth', 'role:admin'])->group(function(){
+
     //Admin Login Dashboard
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])
     ->name('admin.dashboard');
@@ -30,18 +40,73 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
     //Admin Logout
     //Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])
     //->name('admin.logout');
+
+    //Admin->User Account->Create
+    Route::get('/admin/accountCreate', [AdminController::class, 'AccountCreate'])
+    ->name('admin.content.account.create');
+
+    //Admin->User Account->Update
+    Route::get('/admin/accountUpdate', [AdminController::class, 'AccountUpdate'])
+    ->name('admin.content.account.update');
+
+    //Admin->User Account->Delete
+    Route::get('/admin/accountDelete', [AdminController::class, 'AccountDelete'])
+    ->name('admin.content.account.delete');
+
+    //Admin->Role
+    Route::get('/admin/role', [AdminController::class, 'Role'])
+    ->name('admin.content.role');
+
+    //Admin->Course->Create
+    Route::get('/admin/courseCreate', [AdminController::class, 'CourseCreate'])
+    ->name('admin.content.course.create');
+
+    //Admin->Course->Update
+    Route::get('/admin/courseUpdate', [AdminController::class, 'CourseUpdate'])
+    ->name('admin.content.course.update');
+
+    //Admin->Course->Delete
+    Route::get('/admin/courseDelete', [AdminController::class, 'CourseDelete'])
+    ->name('admin.content.course.delete');
+
+    //Admin->Teachers
+    Route::get('/admin/teachers', [AdminController::class, 'Teachers'])
+    ->name('admin.content.teacher');
+
+    //Admin->Students
+    Route::get('/admin/students', [AdminController::class, 'Students'])
+    ->name('admin.content.student');
+    
 });
 
+
+
+//#################################################################################################################################################
+
+
+//Student Middleware
+
+
+
 Route::middleware(['auth', 'role:student'])->group(function(){
-   //Student Login Dashboard
+    //Student Login Dashboard
     Route::get('/student/dashboard', [StudentController::class, 'StudentDashboard'])
     ->name('student.dashboard');
 
     //Student Logout
     //Route::get('/student/logout', [StudentController::class, 'StudentLogout'])
-    //->name('student.logout');
+   //->name('student.logout');
 
 });
+
+
+
+//#################################################################################################################################################
+
+
+//Teacher Middleware
+
+
 
 Route::middleware(['auth', 'role:teacher'])->group(function(){
     //Teacher Login Dashboard
@@ -49,8 +114,8 @@ Route::middleware(['auth', 'role:teacher'])->group(function(){
     ->name('teacher.dashboard');
 
     //Teacher Logout
-   // Route::get('/teacher/logout', [TeacherController::class, 'TeacherLogout'])
-   // ->name('teacher.logout');
+    // Route::get('/teacher/logout', [TeacherController::class, 'TeacherLogout'])
+    // ->name('teacher.logout');
 });
 
 

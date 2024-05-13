@@ -31,20 +31,20 @@
           <div class="collapse" id="uiComponents">
             <ul class="nav sub-menu">
               <li class="nav-item">
-                <a href="{{route('admin.account.accountCreate')}}" class="nav-link">Create</a>
+                <a href="{{route('admin.content.account.create')}}" class="nav-link">Create</a>
               </li>
               <li class="nav-item">
-                <a href="{{route('admin.account.accountUpdate')}}" class="nav-link">Update</a>
+                <a href="{{route('admin.content.account.update')}}" class="nav-link">Update</a>
               </li>
               <li class="nav-item">
-                <a href="{{route('admin.account.accountDelete')}}" class="nav-link">Delete</a>
+                <a href="{{route('admin.content.account.delete')}}" class="nav-link">Delete</a>
               </li>
             </ul>
           </div>
         </li>
       
         <li class="nav-item">
-          <a href="{{route('admin.role')}}" class="nav-link">
+          <a href="{{route('admin.content.role')}}" class="nav-link">
             <i class="link-icon" data-feather="anchor"></i>
             <span class="link-title">Roles</span>
           </a>
@@ -59,38 +59,31 @@
           <div class="collapse" id="forms">
             <ul class="nav sub-menu">
               <li class="nav-item">
-                <a href="{{route('admin.course.courseCreate')}}" class="nav-link">Create</a>
+                <a href="{{route('admin.content.course.create')}}" class="nav-link">Create</a>
               </li>
               <li class="nav-item">
-                <a href="{{route('admin.course.courseUpdate')}}" class="nav-link">Update</a>
+                <a href="{{route('admin.content.course.update')}}" class="nav-link">Update</a>
               </li>
               <li class="nav-item">
-                <a href="{{route('admin.course.courseDelete')}}" class="nav-link">Delete</a>
+                <a href="{{route('admin.content.course.delete')}}" class="nav-link">Delete</a>
               </li>
             </ul>
           </div>
         </li>
       
         <li class="nav-item">
-          <a href="{{route('admin.teachers')}}" class="nav-link">
+          <a href="{{route('admin.content.teacher')}}" class="nav-link">
             <i class="link-icon" data-feather="box"></i>
             <span class="link-title">Teachers</span>
           </a>
         </li>
     
         <li class="nav-item">
-          <a href="{{route('admin.students')}}" class="nav-link">
+          <a href="{{route('admin.content.student')}}" class="nav-link">
             <i class="link-icon" data-feather="box"></i>
             <span class="link-title">Students</span>
           </a>
         </li>
-  
-    <!--    <li class="nav-item">
-          <a href="{{route('calendar')}}" class="nav-link">
-            <i class="link-icon" data-feather="box"></i>
-            <span class="link-title">Calendar</span>
-          </a>
-        </li>  -->
       </ul>
     </div>
   </nav>
