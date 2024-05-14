@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\backend\TeacherTableController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -54,8 +55,11 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
     ->name('admin.content.account.delete');
 
     //Admin->Role
-    Route::get('/admin/role', [AdminController::class, 'Role'])
-    ->name('admin.content.role');
+    Route::get('/admin/addTeacher', [TeacherTableController::class, 'AddTeacher'])
+    ->name('admin.content.role.addTeacher');
+
+    Route::post('/admin/storeTeacher', [TeacherTableController::class, 'StoreTeacher'])
+    ->name('admin.storeTeacher');
 
     //Admin->Course->Create
     Route::get('/admin/courseCreate', [AdminController::class, 'CourseCreate'])
@@ -71,6 +75,9 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
 
     //Admin->Teachers
     Route::get('/admin/teachers', [AdminController::class, 'Teachers'])
+    ->name('admin.content.teacher');
+
+    Route::get('/admin/teachers', [TeacherTableController::class, 'TeacherDetail'])
     ->name('admin.content.teacher');
 
     //Admin->Students

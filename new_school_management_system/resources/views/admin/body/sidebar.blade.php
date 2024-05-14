@@ -42,12 +42,23 @@
             </ul>
           </div>
         </li>
-      
+
         <li class="nav-item">
-          <a href="{{route('admin.content.role')}}" class="nav-link">
-            <i class="link-icon" data-feather="anchor"></i>
+          <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">
+            <i class="link-icon" data-feather="feather"></i>
             <span class="link-title">Roles</span>
+            <i class="link-arrow" data-feather="chevron-down"></i>
           </a>
+          <div class="collapse" id="uiComponents">
+            <ul class="nav sub-menu">
+              <li class="nav-item">
+                <a href="{{route('admin.content.role.addTeacher')}}" class="nav-link">Add Teacher</a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('admin.content.account.update')}}" class="nav-link">Add Student</a>
+              </li>
+            </ul>
+          </div>
         </li>
   
         <li class="nav-item">

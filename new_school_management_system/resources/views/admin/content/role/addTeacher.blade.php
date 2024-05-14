@@ -52,43 +52,42 @@
 
                     <nav class="page-breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Data Table</li>
+                            <li class="breadcrumb-item"><a href="#">Courses</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Create</li>
                         </ol>
                     </nav>
-    
+
                     <div class="row">
-                        <div class="col-md-12 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h6 class="card-title">Data Table</h6>
-                    <p class="text-muted mb-3">Read the <a href="https://datatables.net/" target="_blank"> Official DataTables Documentation </a>for a full list of instructions and other options.</p>
-                    <div class="table-responsive">
-                      <table id="dataTableExample" class="table">
-                        <thead>
-                          <tr>
-                            <th>No</th>
-                            <th>Employee ID</th>
-                            <th>Name</th>
-                            <th>Qualifications</th>
-                            <th>Experience </th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($teachers as $key => $item)
-                                <tr>
-                                    <td>{{ $key+1 }}</td>
-                                    <td>{{ $item->employee_ID}}</td>
-                                    <td>{{ $item->teacher_name}}</td>
-                                    <td>{{ $item->qualifications}}</td>
-                                    <td>{{ $item->experience}}</td>
-                                    <td>
-                                        <button type="button" class="btn btn-denger">Delete</button>
-                                    </td>
-                                </tr>  
-                            @endforeach
-                    </table>
+                        <div class="col-md-6 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+
+                                <h6 class="card-title">Add Teacher Form</h6>
+
+                                <form class="forms-sample" method="POST" action="{{ route('admin.storeTeacher') }}">
+                                    @csrf
+                                    <div class="mb-3">
+                                        <label for="exampleInputUsername1" class="form-label">Employee ID</label>
+                                        <input type="text" class="form-control" name="employee_ID" id="exampleInputUsername1" autocomplete="off" placeholder="Employee ID">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputUsername1" class="form-label">Teacher Name</label>
+                                        <input type="text" class="form-control" name="teacher_name" id="exampleInputUsername1" autocomplete="off" placeholder="Teacher Name<">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputUsername1" class="form-label">Qualifications</label>
+                                        <input type="text" class="form-control" name="qualifications" id="exampleInputUsername1" autocomplete="off" placeholder="Qualifications">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputUsername1" class="form-label">Experience</label>
+                                        <input type="text" class="form-control" name="experience" id="exampleInputUsername1" autocomplete="off" placeholder="Experience">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                                    <button class="btn btn-secondary">Cancel</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- partial:partials/_footer.html -->
