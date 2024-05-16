@@ -13,49 +13,59 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
-    //Admin->User Account->Create Function
-    public function AccountCreate(){
-        return view('admin.content.account.create');
+    //Admin->User Account Function
+    public function UserAccount(){
+        return view('admin.content.account');
     }
 
-    //Admin->User Account->Update Function
-    public function AccountUpdate(){
-        return view('admin.content.account.update');
-    }
-
-    //Admin->User Account->Delete Function
-    public function AccountDelete(){
-        return view('admin.content.account.delete');
-    }
-
-    //Admin->Role Function
-    public function Role(){
+    //Admin->Assign Role Function
+    public function RoleAssign(){
         return view('admin.content.role');
     }
 
-    //Admin->Course->Create Function
+    //Admin->Courses Function
+    public function CourseList(){
+        return view('admin.content.course.course');
+    }
+
+    //Admin->Course Create Function
     public function CourseCreate(){
         return view('admin.content.course.create');
     }
 
-    //Admin->Course->Update Function
-    public function CourseUpdate(){
-        return view('admin.content.course.update');
+    //Admin->Administrators Function
+    public function AdministratorList(){
+        return view('admin.content.Administrator');
     }
 
-    //Admin->Course->Delete Function
-    public function CourseDelete(){
-        return view('admin.content.course.delete');
-    }
-
-    //Admin->Teachers
-    public function Teachers(){
+    //Admin->Teachers Function
+    public function TeacherList(){
         return view('admin.content.teacher');
     }
 
-    //Admin->Students
-    public function Students(){
+    //Admin->Students Function
+    public function StudentList(){
         return view('admin.content.student');
+    }
+
+    //Admin->Deleted Administrators Function
+    public function DeletedAdministrator(){
+        return view('admin.content.history.deletedAdministrator');
+    }
+
+    //Admin->Deleted Teachers Function
+    public function DeletedTeacher(){
+        return view('admin.content.history.deletedTeacher');
+    }
+
+    //Admin->Deleted Students Function
+    public function DeletedStudent(){
+        return view('admin.content.history.deletedStudent');
+    }
+
+    //Admin->Deleted Courses Function
+    public function DeletedCourse(){
+        return view('admin.content.history.deletedCourse');
     }
 
 }
