@@ -22,6 +22,7 @@
         <!-- endinject -->
 
         <!-- Plugin css for this page -->
+        <link rel="stylesheet" href="{{ asset('../../../assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css') }}">
         <!-- End plugin css for this page -->
 
         <!-- inject:css -->
@@ -67,31 +68,26 @@
                       <table id="dataTableExample" class="table">
                         <thead>
                           <tr>
+                            <th>No</th>
                             <th>Course ID</th>
                             <th>Course Name</th>
                             <th>Course Code</th>
-                            <th>Delete</th>
+                            <th>Actions</th>
                           </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td><button type="button" class="btn btn-primary">Delete</button></td>
-                            </tr>
-                            <tr>
-                                <td>Garrett Winters</td>
-                                <td>Accountant</td>
-                                <td>Tokyo</td>
-                                <td><button type="button" class="btn btn-primary">Delete</button></td>
-                            </tr>
-                            <tr>
-                                <td>Ashton Cox</td>
-                                <td>Junior Technical Author</td>
-                                <td>San Francisco</td>
-                                <td><button type="button" class="btn btn-primary">Delete</button></td>
-                            </tr>
+                            @foreach ($courses as $key => $item)
+                                <tr>
+                                    <td>{{ $key+1 }}</td>
+                                    <td>{{ $item->courseID}}</td>
+                                    <td>{{ $item->courseName}}</td>
+                                    <td>{{ $item->courseCode}}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-success">Update</button>
+                                        <button type="button" class="btn btn-danger">Delete</button>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -108,6 +104,9 @@
         <!-- endinject -->
 
         <!-- Plugin js for this page -->
+        <script src="{{ asset('../../../assets/vendors/datatables.net/jquery.dataTables.js') }}"></script>
+        <script src="{{ asset('../../../assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js') }}"></script>
+	
         <!-- End plugin js for this page -->
 
         <!-- inject:js -->

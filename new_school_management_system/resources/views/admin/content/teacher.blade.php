@@ -22,8 +22,9 @@
         <!-- endinject -->
 
         <!-- Plugin css for this page -->
+        <link rel="stylesheet" href="../../../assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
         <!-- End plugin css for this page -->
-
+        
         <!-- inject:css -->
         <link rel="stylesheet" href="{{ asset('../../../assets/fonts/feather-font/css/iconfont.css') }}">
         <link rel="stylesheet" href="{{ asset('../../../assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">

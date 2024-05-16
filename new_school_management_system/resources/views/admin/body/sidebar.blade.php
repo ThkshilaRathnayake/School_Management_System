@@ -45,10 +45,10 @@
           <div class="collapse" id="course">
             <ul class="nav sub-menu">
               <li class="nav-item">
-                <a href="{{route('admin.courseCreate')}}" class="nav-link">Create Course</a>
+                <a href="{{route('admin.addCourse')}}" class="nav-link">Create Course</a>
               </li>
               <li class="nav-item">
-                <a href="{{route('admin.courseList')}}" class="nav-link">Course List</a>
+                <a href="{{route('admin.courseDetail')}}" class="nav-link">Course List</a>
               </li>
             </ul>
           </div>

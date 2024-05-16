@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TeacherTable extends Model
+class CourseTable extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
-      
+    
 }

@@ -6,6 +6,9 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\backend\TeacherTableController;
+use App\Http\Controllers\backend\CourseTableController;
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -48,7 +51,7 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::get('/admin/roleAssign', [AdminController::class, 'RoleAssign'])
     ->name('admin.roleAssign');
 
-    //Admin->Courses 
+    //Admin->Courses List
     Route::get('/admin/courseList', [AdminController::class, 'CourseList'])
     ->name('admin.courseList');
 
@@ -85,9 +88,18 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::get('/admin/deletedCourse', [AdminController::class, 'DeletedCourse'])
     ->name('admin.deletedCourse');
 
+    //@@@@@@@@ Create A Course @@@@@@@@@@@
 
+    Route::get('/admin/courseDetail', [CourseTableController::class, 'CourseDetail'])
+    ->name('admin.courseDetail');
 
-    //@@@@@@@@@@@@@@@@@@@
+    Route::get('/admin/addCourse', [CourseTableController::class, 'AddCourse'])
+    ->name('admin.addCourse');
+
+    Route::post('/admin/storeCourse', [CourseTableController::class, 'StoreCourse'])
+    ->name('admin.storeCourse');
+
+    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     //Admin->Role
     Route::get('/admin/addTeacher', [TeacherTableController::class, 'AddTeacher'])
