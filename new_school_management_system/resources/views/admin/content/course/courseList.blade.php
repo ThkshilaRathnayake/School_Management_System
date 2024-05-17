@@ -72,6 +72,7 @@
                                         <th>Course ID</th>
                                         <th>Course Name</th>
                                         <th>Course Code</th>
+                                        <th>Description</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
@@ -82,8 +83,9 @@
                                                 <td>{{ $item->courseID}}</td>
                                                 <td>{{ $item->courseName}}</td>
                                                 <td>{{ $item->courseCode}}</td>
+                                                <td>{{ $item->description}}</td>
                                                 <td>
-                                                    <a href="{{ route('admin.courseUpdate', $item->id) }}" class="btn btn-outline-success">Update</a>
+                                                    <a href="{{ route('admin.updateDetail', $item->id) }}" class="btn btn-outline-success">Update</a>
                                                     <a href="" class="btn btn-outline-danger">Delete</a>
                                                 </td>
                                             </tr>

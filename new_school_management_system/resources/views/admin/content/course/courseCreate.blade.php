@@ -62,7 +62,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h6 class="card-title">Course Creation Form</h6>
-                                    <form class="forms-sample" method="POST" action="{{ route('admin.storeCourse') }}">
+                                    <form class="forms-sample" method="POST" action="{{ route('admin.storeCourseData') }}">
                                         @csrf
                                         <div class="mb-3">
                                             <label for="exampleInputUsername1" class="form-label">Course ID</label>

@@ -37,71 +37,79 @@ require __DIR__.'/auth.php';
 
 Route::middleware(['auth', 'role:admin'])->group(function(){
 
-    //@@@@@@ Admin Side Bar Links @@@@@@
+    //Admin Side Bar Links
+    //{
+        //Admin Login Dashboard
+        Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])
+        ->name('admin.dashboard');
 
-    //Admin Login Dashboard
-    Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])
-    ->name('admin.dashboard');
+        //Admin->User Accounts
+        Route::get('/admin/userAccount', [AdminController::class, 'UserAccount'])
+        ->name('admin.userAccount');
 
-    //Admin->User Accounts
-    Route::get('/admin/userAccount', [AdminController::class, 'UserAccount'])
-    ->name('admin.userAccount');
+        //Admin->Assign Roles
+        Route::get('/admin/roleAssign', [AdminController::class, 'RoleAssign'])
+        ->name('admin.roleAssign');
 
-    //Admin->Assign Roles
-    Route::get('/admin/roleAssign', [AdminController::class, 'RoleAssign'])
-    ->name('admin.roleAssign');
+        //Admin->Courses List
+        Route::get('/admin/courseList', [AdminController::class, 'CourseList'])
+        ->name('admin.courseList');
 
-    //Admin->Courses List
-    Route::get('/admin/courseList', [AdminController::class, 'CourseList'])
-    ->name('admin.courseList');
-
-    //Admin->Course Create 
-    Route::get('/admin/courses', [AdminController::class, 'CourseCreate'])
-    ->name('admin.courseCreate');
+        //Admin->Course Create 
+        Route::get('/admin/courses', [AdminController::class, 'CourseCreate'])
+        ->name('admin.courseCreate');
 
 
-    //Admin->Administrators 
-    Route::get('/admin/administratorList', [AdminController::class, 'AdministratorList'])
-    ->name('admin.administratorList');
+        //Admin->Administrators 
+        Route::get('/admin/administratorList', [AdminController::class, 'AdministratorList'])
+        ->name('admin.administratorList');
 
-    //Admin->Teachers
-    Route::get('/admin/teacher', [AdminController::class, 'TeacherList'])
-    ->name('admin.teacherList');
+        //Admin->Teachers
+        Route::get('/admin/teacher', [AdminController::class, 'TeacherList'])
+        ->name('admin.teacherList');
 
-    //Admin->Students
-    Route::get('/admin/student', [AdminController::class, 'StudentList'])
-    ->name('admin.studentList');
+        //Admin->Students
+        Route::get('/admin/student', [AdminController::class, 'StudentList'])
+        ->name('admin.studentList');
 
-    //Admin->Deleted Administrators
-    Route::get('/admin/deletedAdministrator', [AdminController::class, 'DeletedAdministrator'])
-    ->name('admin.deletedAdministrator');
+        //Admin->Deleted Administrators
+        Route::get('/admin/deletedAdministrator', [AdminController::class, 'DeletedAdministrator'])
+        ->name('admin.deletedAdministrator');
 
-    //Admin->Deleted Teachers
-    Route::get('/admin/deletedTeacher', [AdminController::class, 'DeletedTeacher'])
-    ->name('admin.deletedTeacher');
+        //Admin->Deleted Teachers
+        Route::get('/admin/deletedTeacher', [AdminController::class, 'DeletedTeacher'])
+        ->name('admin.deletedTeacher');
 
-    //Admin->Deleted Students
-    Route::get('/admin/deletedStudent', [AdminController::class, 'DeletedStudent'])
-    ->name('admin.deletedStudent');
+        //Admin->Deleted Students
+        Route::get('/admin/deletedStudent', [AdminController::class, 'DeletedStudent'])
+        ->name('admin.deletedStudent');
 
-    //Admin->Deleted Courses
-    Route::get('/admin/deletedCourse', [AdminController::class, 'DeletedCourse'])
-    ->name('admin.deletedCourse');
+        //Admin->Deleted Courses
+        Route::get('/admin/deletedCourse', [AdminController::class, 'DeletedCourse'])
+        ->name('admin.deletedCourse');
+    //}
 
-    //@@@@@@@@ Create A Course @@@@@@@@@@@
 
-    Route::get('/admin/courseDetail', [CourseTableController::class, 'CourseDetail'])
-    ->name('admin.courseDetail');
+    //Create A Course
+    //{
+        Route::get('/admin/courseList', [CourseTableController::class, 'CourseList'])
+        ->name('admin.courseList');
 
-    Route::get('/admin/addCourse', [CourseTableController::class, 'AddCourse'])
-    ->name('admin.addCourse');
+        Route::get('/admin/createCourse', [CourseTableController::class, 'CreateCourse'])
+        ->name('admin.createCourse');
 
-    Route::post('/admin/storeCourse', [CourseTableController::class, 'StoreCourse'])
-    ->name('admin.storeCourse');
+        Route::post('/admin/storeCourseData', [CourseTableController::class, 'StoreCourseData'])
+        ->name('admin.storeCourseData');
+    //}
 
-    Route::get('/admin/courseUpdate/{id}', [CourseTableController::class, 'CourseUpdate'])
-    ->name('admin.courseUpdate');
+    //Update Course Data
+    //{
+        Route::get('/admin/updateDetail/{id}', [CourseTableController::class, 'UpdateDetail'])
+        ->name('admin.updateDetail');
 
+        Route::PUT('/admin/courseUpdate/{id}', [CourseTableController::class, 'CourseUpdate'])
+        ->name('admin.courseUpdate');
+    //}
     //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     //Admin->Role

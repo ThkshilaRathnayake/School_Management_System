@@ -63,8 +63,9 @@
                             <div class="card-body">
                                 <h4 class="card-title">Course Update Form</h4>
                                 <!--<p class="text-muted mb-3">Read the <a href="https://github.com/mimo84/bootstrap-maxlength" target="_blank"> Official Bootstrap MaxLength Documentation </a>for a full list of instructions and other options.</p>-->
-                                <form class="forms-sample" method="POST" action="{{ route('admin.storeCourse') }}">
+                                <form class="forms-sample" method="POST" action="{{ route('admin.courseUpdate', $courses->id) }}">
                                     @csrf
+                                    @method('PUT')
                                     <div class="row mb-3">
                                         <div class="col-lg-3">
                                             <label for="defaultconfig" class="col-form-label">Course ID</label>
@@ -94,7 +95,7 @@
                                             <label for="defaultconfig-4" class="col-form-label">Description</label>
                                         </div>
                                         <div class="col-lg-8">
-                                            <textarea id="maxlength-textarea" class="form-control" name="description" id="defaultconfig-4" maxlength="100" rows="8" placeholder="This textarea has a limit of 100 chars."></textarea>
+                                            <textarea id="maxlength-textarea" class="form-control" name="description" value="{{ $courses->description }}" id="defaultconfig-4" maxlength="100" rows="8" placeholder="This textarea has a limit of 100 chars."></textarea>
                                         </div>
                                    </div>
                                     <!--<div class="mb-3">

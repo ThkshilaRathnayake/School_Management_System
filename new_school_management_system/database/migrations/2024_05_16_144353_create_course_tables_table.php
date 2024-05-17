@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('courseID');
             $table->string('courseName');
             $table->string('courseCode');
+            $table->text('description')->nullable();
             //$table->string('teachers');
             //$table->string('students');
             $table->timestamps();
