@@ -99,6 +99,9 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::post('/admin/storeCourse', [CourseTableController::class, 'StoreCourse'])
     ->name('admin.storeCourse');
 
+    Route::get('/admin/courseUpdate/{id}', [CourseTableController::class, 'CourseUpdate'])
+    ->name('admin.courseUpdate');
+
     //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     //Admin->Role

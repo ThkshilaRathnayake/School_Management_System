@@ -11,11 +11,11 @@ class CourseTableController extends Controller
 {
     public function CourseDetail(){
         $courses = CourseTable::latest()->get();
-        return view('admin.content.course.course', compact('courses'));
+        return view('admin.content.course.courseList', compact('courses'));
     }
 
     public function AddCourse(){
-        return view('admin.content.course.create');
+        return view('admin.content.course.courseCreate');
     }
 
     public function StoreCourse(Request $request){
@@ -34,5 +34,11 @@ class CourseTableController extends Controller
 
         return redirect()->route('admin.courseCreate');
     }
+
+    public function CourseUpdate($id){
+        $courses = CourseTable::findOrFail($id);
+        return view('admin.content.course.courseUpdate', compact('courses'));
+    }
+
 }
 

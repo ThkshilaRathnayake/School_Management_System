@@ -25,12 +25,12 @@ class AdminController extends Controller
 
     //Admin->Courses Function
     public function CourseList(){
-        return view('admin.content.course.course');
+        return view('admin.content.course.courseList');
     }
 
     //Admin->Course Create Function
     public function CourseCreate(){
-        return view('admin.content.course.create');
+        return view('admin.content.course.courseCreate');
     }
 
     //Admin->Administrators Function
