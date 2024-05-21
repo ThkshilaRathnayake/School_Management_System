@@ -23,14 +23,14 @@
         </li>
 
         <li class="nav-item">
-          <a href="{{route('admin.userAccount')}}" class="nav-link">
+          <a href="#" class="nav-link">
             <i class="link-icon" data-feather="box"></i>
             <span class="link-title">User Accounts</span>
           </a>
         </li>
   
         <li class="nav-item">
-          <a href="{{route('admin.roleAssign')}}" class="nav-link">
+          <a href="#" class="nav-link">
             <i class="link-icon" data-feather="box"></i>
             <span class="link-title">Assign Roles</span>
           </a>
@@ -45,7 +45,7 @@
           <div class="collapse" id="course">
             <ul class="nav sub-menu">
               <li class="nav-item">
-                <a href="{{route('admin.createCourse')}}" class="nav-link">Create Course</a>
+                <a href="{{route('admin.courseCreate')}}" class="nav-link">Create Course</a>
               </li>
               <li class="nav-item">
                 <a href="{{route('admin.courseList')}}" class="nav-link">Course List</a>
@@ -55,21 +55,21 @@
         </li>   
 
         <li class="nav-item">
-          <a href="{{route('admin.administratorList')}}" class="nav-link">
+          <a href="#" class="nav-link">
             <i class="link-icon" data-feather="box"></i>
             <span class="link-title">Administrators</span>
           </a>
         </li>
       
         <li class="nav-item">
-          <a href="{{route('admin.teacherList')}}" class="nav-link">
+          <a href="#" class="nav-link">
             <i class="link-icon" data-feather="box"></i>
             <span class="link-title">Teachers</span>
           </a>
         </li>
     
         <li class="nav-item">
-          <a href="{{route('admin.studentList')}}" class="nav-link">
+          <a href="#" class="nav-link">
             <i class="link-icon" data-feather="box"></i>
             <span class="link-title">Students</span>
           </a>
@@ -84,13 +84,13 @@
           <div class="collapse" id="history">
             <ul class="nav sub-menu">
               <li class="nav-item">
-                <a href="{{route('admin.deletedAdministrator')}}" class="nav-link">Administrators</a>
+                <a href="#" class="nav-link">Administrators</a>
               </li>
               <li class="nav-item">
-                <a href="{{route('admin.deletedTeacher')}}" class="nav-link">Teachers</a>
+                <a href="#" class="nav-link">Teachers</a>
               </li>
               <li class="nav-item">
-                <a href="{{route('admin.deletedStudent')}}" class="nav-link">Students</a>
+                <a href="#" class="nav-link">Students</a>
               </li>
               <li class="nav-item">
                 <a href="{{route('admin.deletedCourse')}}" class="nav-link">Courses</a>

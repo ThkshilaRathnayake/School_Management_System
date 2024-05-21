@@ -38,95 +38,49 @@ require __DIR__.'/auth.php';
 Route::middleware(['auth', 'role:admin'])->group(function(){
 
     //Admin Side Bar Links
-    //{
+   
         //Admin Login Dashboard
         Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])
         ->name('admin.dashboard');
 
-        //Admin->User Accounts
-        Route::get('/admin/userAccount', [AdminController::class, 'UserAccount'])
-        ->name('admin.userAccount');
-
-        //Admin->Assign Roles
-        Route::get('/admin/roleAssign', [AdminController::class, 'RoleAssign'])
-        ->name('admin.roleAssign');
-
-        //Admin->Courses List
-        Route::get('/admin/courseList', [AdminController::class, 'CourseList'])
-        ->name('admin.courseList');
-
-        //Admin->Course Create 
-        Route::get('/admin/courses', [AdminController::class, 'CourseCreate'])
-        ->name('admin.courseCreate');
-
-
-        //Admin->Administrators 
-        Route::get('/admin/administratorList', [AdminController::class, 'AdministratorList'])
-        ->name('admin.administratorList');
-
-        //Admin->Teachers
-        Route::get('/admin/teacher', [AdminController::class, 'TeacherList'])
-        ->name('admin.teacherList');
-
-        //Admin->Students
-        Route::get('/admin/student', [AdminController::class, 'StudentList'])
-        ->name('admin.studentList');
-
-        //Admin->Deleted Administrators
-        Route::get('/admin/deletedAdministrator', [AdminController::class, 'DeletedAdministrator'])
-        ->name('admin.deletedAdministrator');
-
-        //Admin->Deleted Teachers
-        Route::get('/admin/deletedTeacher', [AdminController::class, 'DeletedTeacher'])
-        ->name('admin.deletedTeacher');
-
-        //Admin->Deleted Students
-        Route::get('/admin/deletedStudent', [AdminController::class, 'DeletedStudent'])
-        ->name('admin.deletedStudent');
-
-        //Admin->Deleted Courses
-        Route::get('/admin/deletedCourse', [AdminController::class, 'DeletedCourse'])
-        ->name('admin.deletedCourse');
-    //}
-
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //Create A Course
-    //{
+ 
         Route::get('/admin/courseList', [CourseTableController::class, 'CourseList'])
         ->name('admin.courseList');
 
-        Route::get('/admin/createCourse', [CourseTableController::class, 'CreateCourse'])
-        ->name('admin.createCourse');
+        Route::get('/admin/createCourse', [CourseTableController::class, 'CourseCreate'])
+        ->name('admin.courseCreate');
 
-        Route::post('/admin/storeCourseData', [CourseTableController::class, 'StoreCourseData'])
-        ->name('admin.storeCourseData');
-    //}
+        Route::post('/admin/storeCourseData', [CourseTableController::class, 'CourseStoreData'])
+        ->name('admin.courseStoreData');
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //Update Course Data
-    //{
+   
         Route::get('/admin/updateDetail/{id}', [CourseTableController::class, 'UpdateDetail'])
         ->name('admin.updateDetail');
 
         Route::PUT('/admin/courseUpdate/{id}', [CourseTableController::class, 'CourseUpdate'])
         ->name('admin.courseUpdate');
-    //}
-    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-    //Admin->Role
-    Route::get('/admin/addTeacher', [TeacherTableController::class, 'AddTeacher'])
-    ->name('admin.content.role.addTeacher');
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    Route::post('/admin/storeTeacher', [TeacherTableController::class, 'StoreTeacher'])
-    ->name('admin.storeTeacher');
-
+    //Delete Course Data
     
-
+        Route::get('/admin/courseDelete/{id}', [CourseTableController::class, 'CourseDelete'])
+        ->name('admin.courseDelete');
     
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    Route::get('/admin/teachers', [TeacherTableController::class, 'TeacherDetail'])
-    ->name('admin.content.teacher');
-
-    
+    //View Deleted Course Data
+  
+        Route::get('/admin/deletedCourse', [CourseTableController::class, 'DeletedCourse'])
+        ->name('admin.deletedCourse');   
+ 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
 });
 
