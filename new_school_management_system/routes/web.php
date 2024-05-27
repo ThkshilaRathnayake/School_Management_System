@@ -2,12 +2,11 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Login\StudentController;
-use App\Http\Controllers\Login\TeacherController;
-use App\Http\Controllers\Login\AdminController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\backend\TeacherTableController;
 use App\Http\Controllers\backend\CourseTableController;
-use App\Http\Controllers\Login\RegisterController;
 
 
 
@@ -30,31 +29,12 @@ require __DIR__.'/auth.php';
 
 
 //#################################################################################################################################################
-//Registration & Login
-
-//User Registration 
-    Route::get('/registration/form', [RegisterController::class, 'RegistrationForm'])
-    ->name('registration.form');
-
-    Route::post('/personal/details', [RegisterController::class, 'PersonalDetails'])
-    ->name('personal.details');
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//User Personal Details Form
-    Route::get('/adminForm', [AdminController::class, 'AdminForm'])
-    ->name('admin.form');
-
-    Route::get('/teacherForm', [TeacherController::class, 'TeacherForm'])
-    ->name('teacher.form');
-
-    Route::get('/studentForm', [StudentController::class, 'StudentForm'])
-    ->name('student.form');
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//#################################################################################################################################################
 
 
 //Admin Middleware
+
+
+
 Route::middleware(['auth', 'role:admin'])->group(function(){
 
     //Admin Side Bar Links
