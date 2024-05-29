@@ -9,11 +9,6 @@ use App\Models\Teacher;
 
 class TeacherController extends Controller
 {
-    //Teacher Login Function
-    public function TeacherDashboard(){
-        return view('teacher.index');
-    }
-  
     //Teacher Personal Details Form Function
     public function TeacherForm(){
         return view('registration.teacherForm');

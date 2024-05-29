@@ -53,7 +53,7 @@
                     </nav>
                     <nav class="navbar navbar-expand-lg navbar-light bg-light">
                         <ul class="nav justify-content-end">
-                            <a href="{{ route('login.form') }}" type="button" class="btn btn-inverse-primary">Log in</a>
+                            <a href="" type="button" class="btn btn-inverse-primary">Log in</a>
                             <a href="{{ route('registration.form') }}" type="button" class="btn btn-inverse-primary" id="delete">Register</a>
                         </ul>
                     </nav>
