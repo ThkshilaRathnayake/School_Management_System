@@ -20,7 +20,7 @@
                                         <form class="forms-sample" method="POST" action="{{ route('personal.details') }}">
                                             @csrf
                                             <div class="mb-3">
-                                                <label for="exampleInputUsername1" class="form-label">Name With Inishials</label>
+                                                <label for="userName" class="form-label">Name With Inishials</label>
                                                 <input type="text" class="form-control" name="userName" id="userName" autocomplete="userName" placeholder="Name With Inishials">
                                             </div>
                                             <div class="mb-3">

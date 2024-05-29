@@ -8,16 +8,16 @@ use App\Http\Controllers\Login\AdminController;
 use App\Http\Controllers\backend\TeacherTableController;
 use App\Http\Controllers\backend\CourseTableController;
 use App\Http\Controllers\Login\RegisterController;
-
+use App\Http\Controllers\Login\LoginController;
 
 
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');;
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -33,9 +33,11 @@ require __DIR__.'/auth.php';
 //Registration & Login
 
 //User Registration 
+    //view registration form
     Route::get('/registration/form', [RegisterController::class, 'RegistrationForm'])
     ->name('registration.form');
 
+    //store registration form details & redirect to personal details forms
     Route::post('/personal/details', [RegisterController::class, 'PersonalDetails'])
     ->name('personal.details');
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -67,6 +69,33 @@ require __DIR__.'/auth.php';
     Route::post('/student/personalDetailsStore', [StudentController::class, 'PersonalDetailsStore'])
     ->name('student.personalDetailsStore');
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//User Login 
+    // Show login form
+    Route::get('/login/form', [LoginController::class, 'showLoginForm'])
+    ->name('login.form');
+
+    Route::post('/login/user', [LoginController::class, 'login'])
+    ->name('login.user');
+
+    //Admin
+    Route::middleware(['auth', 'role:admin'])->group(function(){
+        Route::get('/adminDashboard', [AdminController::class, 'AdminDashboard'])
+        ->name('admin.dashboard');
+    });
+
+    //Teacher
+    Route::middleware(['auth', 'role:teacher'])->group(function(){
+        Route::get('/teacherDashboard', [TeacherController::class, 'TeacherDashboard'])
+        ->name('teacher.dashboard');
+    });
+
+    //Student
+    Route::middleware(['auth', 'role:student'])->group(function(){
+        Route::get('/studentDashboard', [StudentController::class, 'StudentDashboard'])
+        ->name('student.dashboard');
+    });
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 

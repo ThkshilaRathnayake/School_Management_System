@@ -9,6 +9,12 @@ use App\Models\Student;
 
 class StudentController extends Controller
 {
+    //Student Login Function
+    public function StudentDashboard(){
+        return view('student.index');
+    }
+
+
     //Student Personal Details Form View Function
     public function StudentForm(){
         return view('registration.studentForm');

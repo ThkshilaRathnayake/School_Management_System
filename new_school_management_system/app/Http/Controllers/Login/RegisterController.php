@@ -15,7 +15,7 @@ class RegisterController extends Controller
         return view('registration.register');
     }
 
-    
+    //store registration form details & redirect to personal details forms
     public function PersonalDetails(Request $request){
         $request->validate([
             'userName' => 'required|string|max:255',
