@@ -2,11 +2,12 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StudentController;
-use App\Http\Controllers\TeacherController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Login\StudentController;
+use App\Http\Controllers\Login\TeacherController;
+use App\Http\Controllers\Login\AdminController;
 use App\Http\Controllers\backend\TeacherTableController;
 use App\Http\Controllers\backend\CourseTableController;
+use App\Http\Controllers\Login\RegisterController;
 
 
 
@@ -73,9 +74,6 @@ require __DIR__.'/auth.php';
 
 
 //Admin Middleware
-
-
-
 Route::middleware(['auth', 'role:admin'])->group(function(){
 
     //Admin Side Bar Links

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Login;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Admin;
@@ -13,7 +14,6 @@ class AdminController extends Controller
     public function AdminDashboard(){
         return view('admin.index');
     }
-<<<<<<< HEAD:new_school_management_system/app/Http/Controllers/Login/AdminController.php
 
     //Admin Personal Details Form View Function
     public function AdminForm(){
@@ -45,6 +45,4 @@ class AdminController extends Controller
         return redirect()->route('welcome');
     }
 
-=======
->>>>>>> parent of bfcf954 (registration):new_school_management_system/app/Http/Controllers/AdminController.php
 }
