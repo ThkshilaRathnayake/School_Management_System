@@ -50,9 +50,10 @@
                 <!-- partial -->
 
                 
-                <!-- partial:partials/_page_content.html -->
+                <!-- Page Content -->
                     @yield('admin')
-                <!-- partial -->	
+                <!-- End Page Content -->
+                
 
                 <!-- partial:partials/_footer.html -->
                     @include('admin.body.footer')
