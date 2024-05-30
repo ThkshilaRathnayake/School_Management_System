@@ -13,7 +13,7 @@ use App\Http\Controllers\Login\RegisterController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -41,15 +41,34 @@ require __DIR__.'/auth.php';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //User Personal Details Form
+    //Admin
     Route::get('/adminForm', [AdminController::class, 'AdminForm'])
     ->name('admin.form');
 
+    //Teacher
     Route::get('/teacherForm', [TeacherController::class, 'TeacherForm'])
     ->name('teacher.form');
 
+    //Student
     Route::get('/studentForm', [StudentController::class, 'StudentForm'])
     ->name('student.form');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//User Personal Details Store
+    //Admin
+    Route::post('/admin/personalDetailsStore', [AdminController::class, 'PersonalDetailsStore'])
+    ->name('admin.personalDetailsStore');
+
+    //Teacher
+    Route::post('/teacher/personalDetailsStore', [TeacherController::class, 'PersonalDetailsStore'])
+    ->name('teacher.personalDetailsStore');
+
+    //Student
+    Route::post('/student/personalDetailsStore', [StudentController::class, 'PersonalDetailsStore'])
+    ->name('student.personalDetailsStore');
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 //#################################################################################################################################################
 
