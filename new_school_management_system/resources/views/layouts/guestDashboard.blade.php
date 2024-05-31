@@ -46,7 +46,7 @@ License: For each use you must have a valid license purchased only from above li
     <body>
 
         <!-- Page Content -->
-            @yield('user')
+            @yield('guest')
         <!-- End Page Content -->
 
         <!-- core:js -->

@@ -8,6 +8,7 @@ use App\Http\Controllers\Login\AdminController;
 use App\Http\Controllers\backend\TeacherTableController;
 use App\Http\Controllers\backend\CourseTableController;
 use App\Http\Controllers\Login\RegisterController;
+use App\Http\Controllers\Login\LoginController;
 
 
 
@@ -27,18 +28,12 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-
-
-//#################################################################################################################################################
-//Registration & Login
-
 //User Registration 
     Route::get('/registration/form', [RegisterController::class, 'RegistrationForm'])
     ->name('registration.form');
 
     Route::post('/personal/details', [RegisterController::class, 'PersonalDetails'])
     ->name('personal.details');
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //User Personal Details Form
     //Admin
@@ -52,7 +47,6 @@ require __DIR__.'/auth.php';
     //Student
     Route::get('/studentForm', [StudentController::class, 'StudentForm'])
     ->name('student.form');
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //User Personal Details Store
     //Admin
@@ -67,14 +61,19 @@ require __DIR__.'/auth.php';
     Route::post('/student/personalDetailsStore', [StudentController::class, 'PersonalDetailsStore'])
     ->name('student.personalDetailsStore');
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//User Login
 
-//#################################################################################################################################################
+//view login form
+    Route::get('/login/form', [LoginController::class, 'LoginForm'])
+    ->name('login.form');
 
+// log user interface
+    Route::post('/login/interface', [LoginController::class, 'LoginInterface'])
+    ->name('login.interface');
 
 //Admin Middleware
-Route::middleware(['auth', 'role:admin'])->group(function(){
+Route::middleware(['auth', 'role:Admin'])->group(function(){
 
     //Admin Side Bar Links
    
@@ -82,8 +81,7 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
         Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])
         ->name('admin.dashboard');
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    
     //Create A Course
  
         Route::get('/admin/courseList', [CourseTableController::class, 'CourseList'])
@@ -95,8 +93,7 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
         Route::post('/admin/storeCourseData', [CourseTableController::class, 'CourseStoreData'])
         ->name('admin.courseStoreData');
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    
     //Update Course Data
    
         Route::get('/admin/updateDetail/{id}', [CourseTableController::class, 'UpdateDetail'])
@@ -105,34 +102,30 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
         Route::PUT('/admin/courseUpdate/{id}', [CourseTableController::class, 'CourseUpdate'])
         ->name('admin.courseUpdate');
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    
     //Delete Course Data
     
         Route::get('/admin/courseDelete/{id}', [CourseTableController::class, 'CourseDelete'])
         ->name('admin.courseDelete');
     
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    
     //View Deleted Course Data
   
         Route::get('/admin/deletedCourse', [CourseTableController::class, 'DeletedCourse'])
         ->name('admin.deletedCourse');   
  
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
 });
 
 
 
-//#################################################################################################################################################
 
 
 //Student Middleware
 
 
 
-Route::middleware(['auth', 'role:student'])->group(function(){
+Route::middleware(['auth', 'role:Student'])->group(function(){
 
     //Student Login Dashboard
     Route::get('/student/dashboard', [StudentController::class, 'StudentDashboard'])
@@ -154,14 +147,13 @@ Route::middleware(['auth', 'role:student'])->group(function(){
 
 
 
-//#################################################################################################################################################
 
 
 //Teacher Middleware
 
 
 
-Route::middleware(['auth', 'role:teacher'])->group(function(){
+Route::middleware(['auth', 'role:Teacher'])->group(function(){
     //Teacher Login Dashboard
     Route::get('/teacher/dashboard', [TeacherController::class, 'TeacherDashboard'])
     ->name('teacher.dashboard');

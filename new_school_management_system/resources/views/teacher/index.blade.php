@@ -1,4 +1,4 @@
-@extends('teacher.teacherDashboard')
+@extends('layouts.teacherDashboard')
 @section('teacher')
 
 <div class="page-content">

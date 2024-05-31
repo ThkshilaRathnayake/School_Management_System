@@ -6,9 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Student;
+use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
+    //Student Login Function
+    public function StudentDashboard(){
+        return view('student.index');
+    }
+
     //Student Personal Details Form View Function
     public function StudentForm(){
         return view('registration.studentForm');

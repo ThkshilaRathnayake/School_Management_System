@@ -1,5 +1,5 @@
-@extends('layouts.userDashboard')
-@section('user')
+@extends('layouts.guestDashboard')
+@section('guest')
 
     <div class="main-wrapper">
         <div class="page-wrapper full-page">
@@ -57,7 +57,7 @@
                                             <div>
                                                 <button type="submit" class="btn btn-primary text-white me-2 mb-2 mb-md-0">Register</button>
                                             </div>
-                                            <a href="login.html" class="d-block mt-3 text-muted">Already a user? Sign in</a>
+                                            <a href="{{ route('login.form') }}" class="d-block mt-3 text-muted">Already a user? Sign in</a>
                                         </form>
                                     </div>
                                 </div>
