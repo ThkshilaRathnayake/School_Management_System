@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Login;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Register;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
@@ -19,7 +18,7 @@ class RegisterController extends Controller
     public function PersonalDetails(Request $request){
         $request->validate([
             'userName' => 'required|string|max:255',
-            'userEmail' => 'required|string|email|max:255|unique:registers',
+            'userEmail' => 'required|string|email|min:8|unique:registers',
             'userPassword' => 'required|string|min:8',
             'role' => 'required|string|in:Admin,Teacher,Student',
         ]);

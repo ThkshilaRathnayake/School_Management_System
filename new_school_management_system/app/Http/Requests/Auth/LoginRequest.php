@@ -24,8 +24,7 @@ class LoginRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
      */
-    public function rules(): array
-    {
+    public function rules(){
         return [
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
@@ -37,15 +36,12 @@ class LoginRequest extends FormRequest
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function authenticate(): void
+    public function authenticate()
     {
-        $this->ensureIsNotRateLimited();
-
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
-            RateLimiter::hit($this->throttleKey());
-
+        $credentials = $this->only('email', 'password');
+        if (!Auth::attempt($credentials, $this->filled('remember'))) {
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'email' => [trans('auth.failed')],
             ]);
         }
 

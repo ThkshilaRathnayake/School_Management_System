@@ -3,8 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
 
 class Role
 {
@@ -13,11 +12,16 @@ class Role
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, $role): Response
+    public function handle($request, Closure $next, $role)
     {
 
-        if ($request->user()->role !== $role) {
-            return redirect('dashboard');
+        if (!Auth::check()) {
+            return redirect('login');
+        }
+
+        $user = Auth::user();
+        if ($user->role !== $role) {
+            return abort(403, 'This action is unauthorized.');
         }
 
         return $next($request);
