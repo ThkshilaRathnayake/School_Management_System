@@ -25,6 +25,7 @@ class TeacherController extends Controller
             'fullName' => 'required|string|max:255',
             'DOB' => 'required|date',
             'gender' => 'required|string|in:Male,Female,Other',
+            'subject' => 'required|string',
             'NICnumber' => 'required|string|max:255|unique:teachers',
             'employeeID' => 'required|string|max:255|unique:teachers',
             'experience' => 'required|string',
@@ -35,6 +36,7 @@ class TeacherController extends Controller
         $teacher->fullName = $request->fullName;
         $teacher->DOB = $request->DOB;
         $teacher->gender = $request->gender;
+        $teacher->subject = $request->subject;
         $teacher->NICnumber = $request->NICnumber;
         $teacher->employeeID = $request->employeeID;
         $teacher->experience = $request->experience;

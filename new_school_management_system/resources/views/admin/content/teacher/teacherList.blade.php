@@ -35,8 +35,8 @@
                                             <td>{{ $item->fullName}}</td>
                                             <td>{{ $item->subject}}</td>
                                             <td>
-                                                <a href="#" class="btn btn-outline-success">Profile</a>
-                                                <a href="#" class="btn btn-outline-danger" id="delete">Edite</a>
+                                                <a href="{{ route('admin.teacherProfile', $item->id) }}" class="btn btn-outline-success">Profile</a>
+                                                <a href="{{ route('admin.editTeacherProfile', $item->id) }}" class="btn btn-outline-danger" id="delete">Edite</a>
                                                 <a href="{{ route('admin.teacherDelete', $item->id) }}" class="btn btn-outline-danger" id="delete">Delete</a>
                                             </td>
                                         </tr>  

@@ -28,14 +28,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($deletedTeachers as $key => $item)
+                                    @foreach ($deletedTeacher as $key => $item)
                                         <tr>
                                             <td>{{ $key+1 }}</td>
                                             <td>{{ $item->employeeID}}</td>
                                             <td>{{ $item->fullName}}</td>
                                             <td>{{ $item->subject}}</td>
                                             <td>
-                                                <a href="#" class="btn btn-outline-success">Profile</a>
+                                                <a href="{{ route('admin.deletedTeacherProfile', $item->id) }}" class="btn btn-outline-success">Profile</a>
                                             </td>    
                                         </tr>
                                     @endforeach

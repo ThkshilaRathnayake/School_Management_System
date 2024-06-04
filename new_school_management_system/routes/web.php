@@ -112,9 +112,33 @@ Route::middleware(['auth', 'role:Admin'])->group(function(){
     //View Deleted Course Data
   
         Route::get('/admin/deletedCourse', [CourseTableController::class, 'DeletedCourse'])
-        ->name('admin.deletedCourse');   
+        ->name('admin.deletedCourse');  
+        
+        
+        Route::get('/admin/teacherList', [TeacherTableController::class, 'TeacherList'])
+        ->name('admin.teacherList');
  
+    //Delete Teacher Data
     
+        Route::get('/admin/teacherDelete/{id}', [TeacherTableController::class, 'TeacherDelete'])
+        ->name('admin.teacherDelete');
+    
+    //View Deleted Teacher Data
+  
+        Route::get('/admin/deletedTeacher', [TeacherTableController::class, 'DeletedTeacher'])
+        ->name('admin.deletedTeacher');  
+    
+        Route::get('/admin/teacherProfile/{id}', [TeacherTableController::class, 'TeacherProfile'])
+        ->name('admin.teacherProfile');
+
+        Route::get('/admin/deletedTeacherProfile/{id}', [TeacherTableController::class, 'DeletedTeacherProfile'])
+        ->name('admin.deletedTeacherProfile');
+
+        Route::get('/admin/editTeacherProfile/{id}', [TeacherTableController::class, 'EditTeacherProfile'])
+        ->name('admin.editTeacherProfile');
+
+        Route::PUT('/admin/updateTeacherProfile/{id}', [TeacherTableController::class, 'UpdateTeacherProfile'])
+        ->name('admin.updateTeacherProfile');
 });
 
 

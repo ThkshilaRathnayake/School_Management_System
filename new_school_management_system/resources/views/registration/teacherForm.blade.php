@@ -38,6 +38,10 @@
                                         </div>
                                     </div>
                                     <div class="mb-3">
+                                        <label for="subject" class="form-label">Subject</label>
+                                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+                                    </div>
+                                    <div class="mb-3">
                                         <label for="NICnumber" class="form-label">NIC Number</label>
                                         <input type="text" class="form-control" name="NICnumber" id="NICnumber" placeholder="NIC Number">
                                     </div>        
