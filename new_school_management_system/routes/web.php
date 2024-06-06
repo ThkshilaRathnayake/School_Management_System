@@ -2,19 +2,29 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\Login\StudentController;
 use App\Http\Controllers\Login\TeacherController;
 use App\Http\Controllers\Login\AdminController;
-use App\Http\Controllers\backend\TeacherTableController;
-use App\Http\Controllers\backend\CourseTableController;
 use App\Http\Controllers\Login\RegisterController;
 use App\Http\Controllers\Login\LoginController;
+
+use App\Http\Controllers\backend\CourseTableController;
+use App\Http\Controllers\backend\TeacherTableController;
+use App\Http\Controllers\backend\StudentTableController;
+use App\Http\Controllers\backend\AdminTableController;
+use App\Http\Controllers\backend\AccountTableController;
 
 
 
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');;
+
+Route::get('/role', function () {
+    return view('admin.content.role.assignRole');
+})->name('role');;
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -117,6 +127,8 @@ Route::middleware(['auth', 'role:Admin'])->group(function(){
         
         Route::get('/admin/teacherList', [TeacherTableController::class, 'TeacherList'])
         ->name('admin.teacherList');
+        Route::post('/admin/teacherList', [TeacherTableController::class, 'TeacherList'])
+        ->name('admin.teacherList');
  
     //Delete Teacher Data
     
@@ -139,6 +151,81 @@ Route::middleware(['auth', 'role:Admin'])->group(function(){
 
         Route::PUT('/admin/updateTeacherProfile/{id}', [TeacherTableController::class, 'UpdateTeacherProfile'])
         ->name('admin.updateTeacherProfile');
+        
+        Route::get('/admin/studentList', [StudentTableController::class, 'StudentList'])
+        ->name('admin.studentList');
+        Route::post('/admin/studentList', [StudentTableController::class, 'StudentList'])
+        ->name('admin.studentList');
+ 
+    //Delete Teacher Data
+    
+        Route::get('/admin/studentDelete/{id}', [StudentTableController::class, 'StudentDelete'])
+        ->name('admin.studentDelete');
+    
+    //View Deleted Teacher Data
+  
+        Route::get('/admin/deletedStudent', [StudentTableController::class, 'DeletedStudent'])
+        ->name('admin.deletedStudent');  
+    
+        Route::get('/admin/studentProfile/{id}', [StudentTableController::class, 'StudentProfile'])
+        ->name('admin.studentProfile');
+
+        Route::get('/admin/deletedStudentProfile/{id}', [StudentTableController::class, 'DeletedStudentProfile'])
+        ->name('admin.deletedStudentProfile');
+
+        Route::get('/admin/editStudentProfile/{id}', [StudentTableController::class, 'EditStudentProfile'])
+        ->name('admin.editStudentProfile');
+
+        Route::PUT('/admin/updateStudentProfile/{id}', [StudentTableController::class, 'UpdateStudentProfile'])
+        ->name('admin.updateStudentProfile');
+
+        Route::get('/admin/adminList', [AdminTableController::class, 'AdminList'])
+        ->name('admin.adminList');
+        Route::post('/admin/adminList', [AdminTableController::class, 'AdminList'])
+        ->name('admin.adminList');
+
+ 
+    //Delete Teacher Data
+    
+        Route::get('/admin/adminDelete/{id}', [AdminTableController::class, 'AdminDelete'])
+        ->name('admin.adminDelete');
+    
+    //View Deleted Teacher Data
+  
+        Route::get('/admin/deletedAdmin', [AdminTableController::class, 'DeletedAdmin'])
+        ->name('admin.deletedAdmin');  
+    
+
+        Route::get('/admin/adminProfile/{id}', [AdminTableController::class, 'AdminProfile'])
+        ->name('admin.adminProfile');
+        Route::get('/admin/deletedAdminProfile/{id}', [AdminTableController::class, 'DeletedAdminProfile'])
+        ->name('admin.deletedAdminProfile');
+        Route::get('/admin/editAdminProfile/{id}', [AdminTableController::class, 'EditAdminProfile'])
+        ->name('admin.editAdminProfile');
+        Route::PUT('/admin/updateAdminProfile/{id}', [AdminTableController::class, 'UpdateAdminProfile'])
+        ->name('admin.updateAdminProfile');
+
+
+        Route::get('/admin/accountList', [AccountTableController::class, 'AccountList'])
+        ->name('admin.accountList');
+
+
+        Route::post('/admin/storeAdminData', [AccountTableController::class, 'AdminStoreData'])
+        ->name('admin.storeAdminData');
+        Route::post('/admin/storeTeacherData', [AccountTableController::class, 'TeacherStoreData'])
+        ->name('admin.storeTeacherData');
+        Route::post('/admin/storeStudentData', [AccountTableController::class, 'StudentStoreData'])
+        ->name('admin.storeStudentData');
+
+
+        Route::post('/admin/newAdminDelete/{id}', [AccountTableController::class, 'NewAdminDelete'])
+        ->name('admin.newAdminDelete');
+        Route::post('/admin/newTeacherDelete/{id}', [AccountTableController::class, 'NewTeacherDelete'])
+        ->name('admin.newTeacherDelete');
+        Route::post('/admin/newStudentDelete/{id}', [AccountTableController::class, 'NewStudentDelete'])
+        ->name('admin.newStudentDelete');
+        
+        
 });
 
 

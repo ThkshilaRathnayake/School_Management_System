@@ -20,36 +20,25 @@
               </a>
           </li>
           <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{ route('admin.accountList') }}" class="nav-link">
                   <i class="link-icon" data-feather="box"></i>
                   <span class="link-title">User Accounts</span>
               </a>
           </li>
           <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{ route('role') }}" class="nav-link">
                   <i class="link-icon" data-feather="box"></i>
                   <span class="link-title">Assign Roles</span>
               </a>
           </li>
+            <li class="nav-item">
+                <a href="{{ route('admin.courseList') }}" class="nav-link">
+                    <i class="link-icon" data-feather="box"></i>
+                    <span class="link-title">Courses</span>
+                </a>
+            </li>
           <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#course" role="button" aria-expanded="false" aria-controls="course">
-                  <i class="link-icon" data-feather="inbox"></i>
-                  <span class="link-title">Courses</span>
-                  <i class="link-arrow" data-feather="chevron-down"></i>
-              </a>
-              <div class="collapse" id="course">
-                  <ul class="nav sub-menu">
-                      <li class="nav-item">
-                          <a href="{{ route('admin.courseCreate') }}" class="nav-link">Create Course</a>
-                      </li>
-                      <li class="nav-item">
-                          <a href="{{ route('admin.courseList') }}" class="nav-link">Course List</a>
-                      </li>
-                  </ul>
-              </div>
-          </li>
-          <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{ route('admin.adminList') }}" class="nav-link {{ request()->routeIs('admin.adminList') || request()->routeIs('admin.adminProfile') ? 'active' : '' }}">
                   <i class="link-icon" data-feather="box"></i>
                   <span class="link-title">Administrators</span>
               </a>
@@ -61,7 +50,7 @@
               </a>
           </li>
           <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{ route('admin.studentList') }}" class="nav-link {{ request()->routeIs('admin.studentList') || request()->routeIs('admin.studentProfile') ? 'active' : '' }}">
                   <i class="link-icon" data-feather="box"></i>
                   <span class="link-title">Students</span>
               </a>
@@ -75,16 +64,16 @@
               <div class="collapse" id="history">
                   <ul class="nav sub-menu">
                       <li class="nav-item">
-                          <a href="#" class="nav-link">Administrators</a>
+                          <a href="{{ route('admin.deletedAdmin') }}" class="nav-link {{ request()->routeIs('admin.deletedAdmin') || request()->routeIs('admin.deletedAdminProfile') ? 'active' : '' }}">Administrators</a>
                       </li>
                       <li class="nav-item">
-                          <a href="{{ route('admin.deletedTeacher') }}" class="nav-link">Teachers</a>
+                          <a href="{{ route('admin.deletedTeacher') }}" class="nav-link {{ request()->routeIs('admin.deletedTeacher') || request()->routeIs('admin.deletedTeacherProfile') ? 'active' : '' }}">Teachers</a>
                       </li>
                       <li class="nav-item">
-                          <a href="#" class="nav-link">Students</a>
+                          <a href="{{ route('admin.deletedStudent') }}" class="nav-link {{ request()->routeIs('admin.deletedStudent') || request()->routeIs('admin.deletedStudentProfile') ? 'active' : '' }}">Students</a>
                       </li>
                       <li class="nav-item">
-                          <a href="{{ route('admin.deletedCourse') }}" class="nav-link">Courses</a>
+                          <a href="{{ route('admin.deletedCourse') }}" class="nav-link {{ request()->routeIs('admin.deletedCourse') ? 'active' : '' }}">Courses</a>
                       </li>
                   </ul>
               </div>

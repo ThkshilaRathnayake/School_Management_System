@@ -4,8 +4,8 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
 use App\Models\CourseTable;
-use Illuminate\Support\Facades\Auth;
 use App\Models\DeletedCourse;
 
 class CourseTableController extends Controller
@@ -44,7 +44,7 @@ class CourseTableController extends Controller
         ]);
 
         // Redirect to the course create page
-        return redirect()->route('admin.courseCreate');
+        return redirect()->route('admin.courseList');
     }
 
 ///////////////////////////////////////////////////////////////////////////////////////////

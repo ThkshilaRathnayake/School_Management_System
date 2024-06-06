@@ -5,9 +5,15 @@
 
         <nav class="page-breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">History</a></li>
+                <li class="breadcrumb-item">History</li>
                 <li class="breadcrumb-item active" aria-current="page">Deleted Teachers</li>
             </ol>
+            <div class="col-lg-4">
+                <div class="input-group">
+                  <input class="form-control" type="text" placeholder="Search mail...">
+                  <button class="btn btn-light btn-icon" type="button" id="button-search-addon"><i data-feather="search"></i></button>
+                </div>
+            </div>
         </nav>
 
         <div class="row">

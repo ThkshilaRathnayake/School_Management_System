@@ -5,16 +5,15 @@
 
         <nav class="page-breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Courses</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Update Form</li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.courseList') }}">Courses</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Update Course</li>
             </ol>
         </nav>
 
         <div class="col-lg-6 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Course Update Form</h4>
-                    <!--<p class="text-muted mb-3">Read the <a href="https://github.com/mimo84/bootstrap-maxlength" target="_blank"> Official Bootstrap MaxLength Documentation </a>for a full list of instructions and other options.</p>-->
+                    <h6 class="card-title">Course Update Form</h6>
                     <form class="forms-sample" method="POST" action="{{ route('admin.courseUpdate', $courses->id) }}">
                         @csrf
                         @method('PUT')
@@ -83,6 +82,5 @@
                 </div>
             </div>
         </div>
-    </div>      
-
+    </div> 
 @endsection

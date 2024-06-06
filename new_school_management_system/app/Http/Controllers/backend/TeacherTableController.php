@@ -4,16 +4,16 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\TeacherTable;
-use App\Models\Teacher;
-use Illuminate\Support\Facades\Auth;
+//use App\Models\TeacherTable;
+use App\Models\AcceptedTeacher;
+//use Illuminate\Support\Facades\Auth;
 use App\Models\DeletedTeacher;
 
 class TeacherTableController extends Controller
 {
     // Admin->View Teacher List 
     public function TeacherList(){
-        $teachers = Teacher::latest()->get();
+        $teachers = AcceptedTeacher::latest()->get();
         return view('admin.content.teacher.teacherList', compact('teachers'));
     }
 
@@ -21,7 +21,7 @@ class TeacherTableController extends Controller
     public function TeacherDelete($id)
     {
         // Find the Teacher by ID
-        $teachers = Teacher::findOrFail($id);
+        $teachers = AcceptedTeacher::findOrFail($id);
 
         // Store the Teacher data in the Deleted Teacher table
         DeletedTeacher::create([
@@ -56,7 +56,7 @@ class TeacherTableController extends Controller
     public function TeacherProfile($id)
     {
         // Find the Teacher by ID
-        $teachers = Teacher::findOrFail($id);
+        $teachers = AcceptedTeacher::findOrFail($id);
 
         // Redirect to the Course Update page
         return view('admin.content.teacher.teacherProfile', compact('teachers'));
@@ -74,7 +74,7 @@ class TeacherTableController extends Controller
     // Admin->View Update Teacher Form 
     public function EditTeacherProfile($id){
         // Find the course by ID
-        $teachers = Teacher::findOrFail($id);
+        $teachers = AcceptedTeacher::findOrFail($id);
 
         // Redirect to the Course Update page
         return view('admin.content.teacher.teacherProfileEdit', compact('teachers'));
@@ -95,7 +95,7 @@ class TeacherTableController extends Controller
         ]);
 
         // Find the course by ID
-        $teachers = Teacher::findOrFail($id);
+        $teachers = AcceptedTeacher::findOrFail($id);
         
         // Update the course record
         $teachers->update($request->only(['subject', 'experience', 'qualifications', 'note']));
@@ -103,31 +103,4 @@ class TeacherTableController extends Controller
         // Redirect to the course list page
         return redirect()->route('admin.teacherList');
     }
-
-
-
-
-
-
-//     public function AddTeacher(){
-//         return view('admin.content.role.addTeacher');
-//     }
-
-//     public function StoreTeacher(Request $request){
-//         $request->validate([
-//             'employee_ID' => 'required|unique:teacher_tables',
-//             'teacher_name' => 'required',
-//             'qualifications' => 'required',
-//             'experience' => 'required',
-//         ]);
-
-//         TeacherTable::insert([
-//             'employee_ID' => $request->employee_ID,
-//             'teacher_name' => $request->teacher_name,
-//             'qualifications' => $request->qualifications,
-//             'experience' => $request->experience,
-//         ]);
-
-//         return redirect()->route('admin.content.role.addTeacher');
-//     }
 }
