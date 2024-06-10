@@ -4,7 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-//use App\Models\StudentTable;
+
 use App\Models\AcceptedStudent;
 use App\Models\DeletedStudent;
 
@@ -94,5 +94,33 @@ class StudentTableController extends Controller
         // Redirect to the Student list page
         return redirect()->route('admin.studentList');
     }
+
+    public function SearchDeletedStudents(Request $request)
+    {
+        $search = $request->input('search');
+        
+        $deletedStudent = DeletedStudent::when($search, function ($query, $search) {
+            return $query->where('fullName', 'like', "%{$search}%")
+                         ->orWhere('studentID', 'like', "%{$search}%")
+                         ->orWhere('grade', 'like', "%{$search}%");
+        })->get();
+
+        return view('admin.content.history.deletedStudents', compact('deletedStudent'));
+    }
+
+    public function SearchStudentList(Request $request)
+    {
+        $search = $request->input('search');
+        
+        $students = AcceptedStudent::when($search, function ($query, $search) {
+            return $query->where('fullName', 'like', "%{$search}%")
+                         ->orWhere('studentID', 'like', "%{$search}%")
+                         ->orWhere('grade', 'like', "%{$search}%");
+        })->get();
+
+        return view('admin.content.student.studentList', compact('students'));
+    }
+
+    
 
 }

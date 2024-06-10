@@ -6,13 +6,15 @@
         <nav class="page-breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">History</li>
-                <li class="breadcrumb-item active" aria-current="page">Deleted Teachers</li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('admin.deletedTeacher') }}">Deleted Teachers</a></li>
             </ol>
             <div class="col-lg-4">
-                <div class="input-group">
-                  <input class="form-control" type="text" placeholder="Search mail...">
-                  <button class="btn btn-light btn-icon" type="button" id="button-search-addon"><i data-feather="search"></i></button>
-                </div>
+                <form method="GET" action="{{ route('admin.searchDeletedTeachers') }}">
+                    <div class="input-group">
+                      <input name="search" class="form-control" type="text" placeholder="Search tearch..." value="{{ request()->input('search') }}">
+                      <button class="btn btn-light btn-icon" type="submit" id="button-search-addon"><i data-feather="search"></i></button>
+                    </div>
+                </form>
             </div>
         </nav>
 

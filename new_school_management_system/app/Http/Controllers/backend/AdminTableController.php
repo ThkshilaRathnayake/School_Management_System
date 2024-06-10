@@ -4,7 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-//use App\Models\AdminTable;
+
 use App\Models\AcceptedAdmin;
 use App\Models\DeletedAdmin;
 
@@ -95,6 +95,30 @@ class AdminTableController extends Controller
 
         // Redirect to the Admin list page
         return redirect()->route('admin.adminList');
+    }
+
+    public function SearchDeletedAdmins(Request $request)
+    {
+        $search = $request->input('search');
+        
+        $deletedAdministrator = DeletedAdmin::when($search, function ($query, $search) {
+            return $query->where('fullName', 'like', "%{$search}%")
+                         ->orWhere('employeeID', 'like', "%{$search}%");
+        })->get();
+
+        return view('admin.content.history.deletedAdmins', compact('deletedAdministrator'));
+    }
+
+    public function SearchAdminList(Request $request)
+    {
+        $search = $request->input('search');
+        
+        $administrators = AcceptedAdmin::when($search, function ($query, $search) {
+            return $query->where('fullName', 'like', "%{$search}%")
+                         ->orWhere('employeeID', 'like', "%{$search}%");
+        })->get();
+
+        return view('admin.content.administrator.adminList', compact('administrators'));
     }
 
 }

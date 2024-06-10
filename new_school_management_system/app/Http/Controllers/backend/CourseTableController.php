@@ -115,6 +115,31 @@ class CourseTableController extends Controller
         return view('admin.content.history.deletedCourse', compact('deletedCourse'));
     }
 
+    public function SearchDeletedCourses(Request $request)
+    {
+        $search = $request->input('search');
+        
+        $deletedCourse = DeletedCourse::when($search, function ($query, $search) {
+            return $query->where('courseID', 'like', "%{$search}%")
+                         ->orWhere('courseName', 'like', "%{$search}%")
+                         ->orWhere('courseCode', 'like', "%{$search}%");
+        })->get();
+
+        return view('admin.content.history.deletedCourse', compact('deletedCourse'));
+    }
+
+    public function SearchCourseList(Request $request)
+    {
+        $search = $request->input('search');
+        
+        $courses = CourseTable::when($search, function ($query, $search) {
+            return $query->where('courseID', 'like', "%{$search}%")
+                         ->orWhere('courseName', 'like', "%{$search}%")
+                         ->orWhere('courseCode', 'like', "%{$search}%");
+        })->get();
+
+        return view('admin.content.course.courseList', compact('courses'));
+    }
 
 }
 

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CourseTable extends Model
+class StudentsForCourse extends Model
 {
     use HasFactory;
 
@@ -13,7 +13,9 @@ class CourseTable extends Model
         'courseID',
         'courseName',
         'courseCode',
-        'description',
-    ];
+        'fullName',
+        'grade',
+        'studentID',
     
+    ];
 }

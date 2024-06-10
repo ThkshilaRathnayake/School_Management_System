@@ -14,6 +14,7 @@ use App\Http\Controllers\backend\TeacherTableController;
 use App\Http\Controllers\backend\StudentTableController;
 use App\Http\Controllers\backend\AdminTableController;
 use App\Http\Controllers\backend\AccountTableController;
+use App\Http\Controllers\backend\RoleAssignController;
 
 
 
@@ -24,7 +25,6 @@ Route::get('/', function () {
 Route::get('/role', function () {
     return view('admin.content.role.assignRole');
 })->name('role');;
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -224,6 +224,55 @@ Route::middleware(['auth', 'role:Admin'])->group(function(){
         ->name('admin.newTeacherDelete');
         Route::post('/admin/newStudentDelete/{id}', [AccountTableController::class, 'NewStudentDelete'])
         ->name('admin.newStudentDelete');
+
+    
+
+        Route::get('/admin/searchDeletedTeachers', [TeacherTableController::class, 'SearchDeletedTeachers'])
+        ->name('admin.searchDeletedTeachers');
+        Route::get('/admin/searchDeletedAdmins', [AdminTableController::class, 'SearchDeletedAdmins'])
+        ->name('admin.searchDeletedAdmins');
+        Route::get('/admin/searchDeletedStudents', [StudentTableController::class, 'SearchDeletedStudents'])
+        ->name('admin.searchDeletedStudents');
+        Route::get('/admin/searchDeletedCourses', [CourseTableController::class, 'SearchDeletedCourses'])
+        ->name('admin.searchDeletedCourses');
+        Route::get('/admin/searchStudentList', [StudentTableController::class, 'SearchStudentList'])
+        ->name('admin.searchStudentList');
+        Route::get('/admin/searchTeacherList', [TeacherTableController::class, 'SearchTeacherList'])
+        ->name('admin.searchTeacherList');
+        Route::get('/admin/searchAdminList', [AdminTableController::class, 'SearchAdminList'])
+        ->name('admin.searchAdminList');
+        Route::get('/admin/searchCourseList', [CourseTableController::class, 'SearchCourseList'])
+        ->name('admin.searchCourseList');
+
+        Route::get('/admin/addTeachersForCourse', [RoleAssignController::class, 'AddTeachersForCourse'])
+        ->name('admin.addTeachersForCourse');
+        Route::get('/admin/addStudentsForCourse', [RoleAssignController::class, 'AddStudentsForCourse'])
+        ->name('admin.addStudentsForCourse');
+        Route::get('/admin/addCoursesForTeacher', [RoleAssignController::class, 'AddCoursesForTeacher'])
+        ->name('admin.addCoursesForTeacher');
+        Route::get('/admin/addCoursesForStudent', [RoleAssignController::class, 'AddCoursesForStudent'])
+        ->name('admin.addCoursesForStudent');
+
+        Route::get('/admin/teacherListForCourses/{courseId}', [RoleAssignController::class, 'TeacherListForCourses'])
+        ->name('admin.teacherListForCourses');
+        Route::get('/admin/coursesListForTeacher/{employeeID}', [RoleAssignController::class, 'CoursesListForTeacher'])
+        ->name('admin.coursesListForTeacher');
+        Route::get('/admin/studentListForCourses/{courseId}', [RoleAssignController::class, 'StudentListForCourses'])
+        ->name('admin.studentListForCourses');
+        Route::get('/admin/coursesListForStudent/{studentID}', [RoleAssignController::class, 'CoursesListForStudent'])
+        ->name('admin.coursesListForStudent');
+
+        Route::post('/admin/teacherStoreForCourses', [RoleAssignController::class, 'TeacherStoreForCourses'])
+        ->name('admin.teacherStoreForCourses');
+        Route::post('/admin/studentStoreForCourses', [RoleAssignController::class, 'StudentStoreForCourses'])
+        ->name('admin.studentStoreForCourses');
+        Route::post('/admin/courseStoreForTeachers', [RoleAssignController::class, 'CourseStoreForTeachers'])
+        ->name('admin.courseStoreForTeachers');
+        Route::post('/admin/courseStoreForStudents', [RoleAssignController::class, 'CourseStoreForStudents'])
+        ->name('admin.courseStoreForStudents');
+
+        
+
         
         
 });

@@ -4,9 +4,8 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-//use App\Models\TeacherTable;
+
 use App\Models\AcceptedTeacher;
-//use Illuminate\Support\Facades\Auth;
 use App\Models\DeletedTeacher;
 
 class TeacherTableController extends Controller
@@ -103,4 +102,33 @@ class TeacherTableController extends Controller
         // Redirect to the course list page
         return redirect()->route('admin.teacherList');
     }
+
+    public function SearchDeletedTeachers(Request $request)
+    {
+        $search = $request->input('search');
+        
+        $deletedTeacher = DeletedTeacher::when($search, function ($query, $search) {
+            return $query->where('fullName', 'like', "%{$search}%")
+                         ->orWhere('employeeID', 'like', "%{$search}%")
+                         ->orWhere('subject', 'like', "%{$search}%");
+        })->get();
+
+        return view('admin.content.history.deletedTeachers', compact('deletedTeacher'));
+    }
+
+    public function SearchTeacherList(Request $request)
+    {
+        $search = $request->input('search');
+        
+        $teachers = AcceptedTeacher::when($search, function ($query, $search) {
+            return $query->where('fullName', 'like', "%{$search}%")
+                         ->orWhere('employeeID', 'like', "%{$search}%")
+                         ->orWhere('subject', 'like', "%{$search}%");
+        })->get();
+
+        return view('admin.content.teacher.teacherList', compact('teachers'));
+    }
+    
+
+    
 }
