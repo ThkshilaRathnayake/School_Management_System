@@ -271,6 +271,25 @@ Route::middleware(['auth', 'role:Admin'])->group(function(){
         Route::post('/admin/courseStoreForStudents', [RoleAssignController::class, 'CourseStoreForStudents'])
         ->name('admin.courseStoreForStudents');
 
+        Route::delete('/admin/removeTeacherFromCourse/{id}', [RoleAssignController::class, 'RemoveTeacherFromCourse'])
+        ->name('admin.removeTeacherFromCourse');
+        Route::delete('/admin/removeStudentFromCourse/{id}', [RoleAssignController::class, 'RemoveStudentFromCourse'])
+        ->name('admin.removeStudentFromCourse');
+        Route::delete('/admin/removeCourseFromTeacher/{id}', [RoleAssignController::class, 'RemoveCourseFromTeacher'])
+        ->name('admin.removeCourseFromTeacher');
+        Route::delete('/admin/removeCourseFromStudent/{id}', [RoleAssignController::class, 'RemoveCourseFromStudent'])
+        ->name('admin.removeCourseFromStudent');
+
+
+        Route::get('/admin/searchCourseForTeacher', [RoleAssignController::class, 'SearchCourseForTeacher'])
+        ->name('admin.searchCourseForTeacher');
+        Route::get('/admin/searchCourseForStudent', [RoleAssignController::class, 'SearchCourseForStudent'])
+        ->name('admin.searchCourseForStudent');
+        Route::get('/admin/searchTeacherForCourse', [RoleAssignController::class, 'SearchTeacherForCourse'])
+        ->name('admin.searchTeacherForCourse');
+        Route::get('/admin/searchStudentForCourse', [RoleAssignController::class, 'SearchStudentForCourse'])
+        ->name('admin.searchStudentForCourse');
+       
         
 
         

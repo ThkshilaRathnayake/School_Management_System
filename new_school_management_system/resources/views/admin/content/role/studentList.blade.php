@@ -41,20 +41,74 @@
         </div>
 
         <div class="row">
-            <div class="col-md-12 grid-margin stretch-card">
+            <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-title">Selected Students List</h6>
-                        <div class="col-lg-4">
+                        <h6 class="card-title">Students List</h6>
+                        {{-- <div class="col-lg-4">
                             <form method="GET" action="#">
                                 <div class="input-group">
                                   <input name="search" class="form-control" type="text" placeholder="Search student..." value="{{ request()->input('search') }}">
                                   <button class="btn btn-light btn-icon" type="submit" id="button-search-addon"><i data-feather="search"></i></button>
                                 </div>
                             </form>
-                        </div>
+                        </div> --}}
+                        <p class="text-muted mb-3"></p>
                         <div class="table-responsive">
-                            <table id="dataTableExample" class="table">
+                            <table id="dataTableExample" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Student ID</th>
+                                        <th>Name</th>
+                                        <th>Grade</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($students as $key => $item)
+                                        @if (!$selectedStudents->contains('studentID', $item->studentID))
+                                            <tr>
+                                                <td>{{ $key+1 }}</td>
+                                                <td>{{ $item->studentID}}</td>
+                                                <td>{{ $item->fullName}}</td>
+                                                <td>{{ $item->grade}}</td>
+                                                <td>
+                                                    <form method="POST" action="{{ route('admin.studentStoreForCourses') }}">
+                                                        @csrf
+                                                        <input type="hidden" name="fullName" value="{{ $item->fullName }}">
+                                                        <input type="hidden" name="studentID" value="{{ $item->studentID }}">
+                                                        <input type="hidden" name="grade" value="{{ $item->grade }}">
+                                                        <input type="hidden" name="courseID" value="{{ $course->courseID }}">
+                                                        <input type="hidden" name="courseName" value="{{ $course->courseName }}">
+                                                        <input type="hidden" name="courseCode" value="{{ $course->courseCode }}">
+                                                        <button type="submit" class="btn btn-outline-success">Add</button>
+                                                    </form>
+                                                </td>
+                                            </tr> 
+                                        @endif   
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title">Selected Students List</h6>
+                        {{-- <div class="col-lg-4">
+                            <form method="GET" action="#">
+                                <div class="input-group">
+                                  <input name="search" class="form-control" type="text" placeholder="Search student..." value="{{ request()->input('search') }}">
+                                  <button class="btn btn-light btn-icon" type="submit" id="button-search-addon"><i data-feather="search"></i></button>
+                                </div>
+                            </form>
+                        </div> --}}
+                        <div class="table-responsive">
+                            <table id="dataTableExample" class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -72,64 +126,10 @@
                                             <td>{{ $item->fullName}}</td>
                                             <td>{{ $item->grade}}</td>
                                             <td>
-                                                {{-- <form method="POST" action="#">
+                                                <form method="POST" action="{{ route('admin.removeStudentFromCourse', ['id' => $item->id]) }}">
                                                     @csrf
-                                                    @method('DELETE') --}}
+                                                    @method('DELETE')
                                                     <button type="submit" class="btn btn-outline-danger">Remove</button>
-                                                {{-- </form> --}}
-                                            </td>
-                                        </tr>  
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <h6 class="card-title">Students List</h6>
-                        <div class="col-lg-4">
-                            <form method="GET" action="#">
-                                <div class="input-group">
-                                  <input name="search" class="form-control" type="text" placeholder="Search student..." value="{{ request()->input('search') }}">
-                                  <button class="btn btn-light btn-icon" type="submit" id="button-search-addon"><i data-feather="search"></i></button>
-                                </div>
-                            </form>
-                        </div>
-                        <p class="text-muted mb-3"></p>
-                        <div class="table-responsive">
-                            <table id="dataTableExample" class="table">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Student ID</th>
-                                        <th>Name</th>
-                                        <th>Grade</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($students as $key => $item)
-                                        <tr>
-                                            <td>{{ $key+1 }}</td>
-                                            <td>{{ $item->studentID}}</td>
-                                            <td>{{ $item->fullName}}</td>
-                                            <td>{{ $item->grade}}</td>
-                                            <td>
-                                                <form method="POST" action="{{ route('admin.studentStoreForCourses') }}">
-                                                    @csrf
-                                                    <input type="hidden" name="fullName" value="{{ $item->fullName }}">
-                                                    <input type="hidden" name="studentID" value="{{ $item->studentID }}">
-                                                    <input type="hidden" name="grade" value="{{ $item->grade }}">
-                                                    <input type="hidden" name="courseID" value="{{ $course->courseID }}">
-                                                    <input type="hidden" name="courseName" value="{{ $course->courseName }}">
-                                                    <input type="hidden" name="courseCode" value="{{ $course->courseCode }}">
-                                                    <button type="submit" class="btn btn-outline-success">Add</button>
                                                 </form>
                                             </td>
                                         </tr>  
