@@ -47,15 +47,15 @@ require __DIR__.'/auth.php';
 
 //User Personal Details Form
     //Admin
-    Route::get('/adminForm', [AdminController::class, 'AdminForm'])
+    Route::get('/adminForm/{register_id}', [AdminController::class, 'AdminForm'])
     ->name('admin.form');
 
     //Teacher
-    Route::get('/teacherForm', [TeacherController::class, 'TeacherForm'])
+    Route::get('/teacherForm/{register_id}', [TeacherController::class, 'TeacherForm'])
     ->name('teacher.form');
 
     //Student
-    Route::get('/studentForm', [StudentController::class, 'StudentForm'])
+    Route::get('/studentForm/{register_id}', [StudentController::class, 'StudentForm'])
     ->name('student.form');
 
 //User Personal Details Store

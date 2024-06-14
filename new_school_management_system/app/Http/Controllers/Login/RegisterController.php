@@ -33,11 +33,11 @@ class RegisterController extends Controller
         // Redirect based on the role
         switch ($user->role) {
             case 'Admin':
-                return redirect()->route('admin.form');
+                return redirect()->route('admin.form', ['register_id' => $user->id]);
             case 'Teacher':
-                return redirect()->route('teacher.form');
+                return redirect()->route('teacher.form', ['register_id' => $user->id]);
             case 'Student':
-                return redirect()->route('student.form');
+                return redirect()->route('student.form', ['register_id' => $user->id]);
             default:
                 return redirect()->route('user.registration')->with('error', 'Invalid role.');
         }

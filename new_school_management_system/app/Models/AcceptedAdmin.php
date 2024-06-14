@@ -10,6 +10,7 @@ class AcceptedAdmin extends Model
     use HasFactory;
 
     protected $fillable = [
+        'register_id',
         'fullName',
         'DOB',
         'gender',

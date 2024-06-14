@@ -44,6 +44,7 @@
                                         <td>
                                             <form method="POST" action="{{ route('admin.storeAdminData') }}" style="display:inline;">
                                                 @csrf
+                                                <input type="hidden" name="register_id" value="{{ $item->register_id }}">
                                                 <input type="hidden" name="fullName" value="{{ $item->fullName }}">
                                                 <input type="hidden" name="DOB" value="{{ $item->DOB }}">
                                                 <input type="hidden" name="gender" value="{{ $item->gender }}">
@@ -104,6 +105,7 @@
                                         <td>
                                             <form method="POST" action="{{ route('admin.storeTeacherData') }}" style="display:inline;">
                                                 @csrf
+                                                <input type="hidden" name="register_id" value="{{ $item->register_id }}">
                                                 <input type="hidden" name="fullName" value="{{ $item->fullName }}">
                                                 <input type="hidden" name="DOB" value="{{ $item->DOB }}">
                                                 <input type="hidden" name="gender" value="{{ $item->gender }}">
@@ -161,6 +163,7 @@
                                         <td>
                                             <form method="POST" action="{{ route('admin.storeStudentData') }}" style="display:inline;">
                                                 @csrf
+                                                <input type="hidden" name="register_id" value="{{ $item->register_id }}">
                                                 <input type="hidden" name="fullName" value="{{ $item->fullName }}">
                                                 <input type="hidden" name="DOB" value="{{ $item->DOB }}">
                                                 <input type="hidden" name="gender" value="{{ $item->gender }}">

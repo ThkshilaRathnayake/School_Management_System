@@ -10,6 +10,7 @@ class AcceptedStudent extends Model
     use HasFactory;
 
     protected $fillable = [
+        'register_id',
         'fullName',
         'DOB',
         'gender',

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Register;
 
 class AdminController extends Controller
 {
@@ -16,13 +17,15 @@ class AdminController extends Controller
     }
 
     //Admin Personal Details Form View Function
-    public function AdminForm(){
-        return view('registration.adminForm');
+    public function AdminForm($register_id){
+        $register = Register::findOrFail($register_id);
+        return view('registration.adminForm', compact('register_id'));
     }
 
     //Admin Personal Details Store Function
     public function PersonalDetailsStore(Request $request){
         $request->validate([
+            'register_id' => 'required|exists:registers,id',
             'fullName' => 'required|string|max:255',
             'DOB' => 'required|date',
             'gender' => 'required|string|in:Male,Female,Other',
@@ -33,6 +36,7 @@ class AdminController extends Controller
         ]);
 
         $admin = new Admin();
+        $admin->register_id = $request->register_id;
         $admin->fullName = $request->fullName;
         $admin->DOB = $request->DOB;
         $admin->gender = $request->gender;

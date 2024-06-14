@@ -10,6 +10,7 @@ class Admin extends Model
     use HasFactory;
 
     protected $fillable = [
+        'register_id',
         'fullName',
         'DOB',
         'gender',
@@ -18,4 +19,9 @@ class Admin extends Model
         'experience',
         'qualifications',
     ];
+
+    public function register()
+    {
+        return $this->belongsTo(Register::class);
+    }
 }

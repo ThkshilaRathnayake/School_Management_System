@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('accepted_admins', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('register_id');
             $table->string('fullName');
             $table->date('DOB');
             $table->string('gender');
@@ -21,6 +22,8 @@ return new class extends Migration
             $table->string('experience');
             $table->string('qualifications');
             $table->timestamps();
+
+            $table->foreign('register_id')->references('id')->on('registers')->onDelete('cascade');
         });
     }
 

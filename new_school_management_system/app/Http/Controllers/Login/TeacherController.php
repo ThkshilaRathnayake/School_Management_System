@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Teacher;
+use App\Models\Register;
 
 class TeacherController extends Controller
 {
@@ -15,13 +16,15 @@ class TeacherController extends Controller
     }
 
     //Teacher Personal Details Form Function
-    public function TeacherForm(){
-        return view('registration.teacherForm');
+    public function TeacherForm($register_id){
+        $register = Register::findOrFail($register_id);
+        return view('registration.teacherForm', compact('register_id'));
     }
 
     //Teacher Personal Details Store Function
     public function PersonalDetailsStore(Request $request){
         $request->validate([
+            'register_id' => 'required|exists:registers,id',
             'fullName' => 'required|string|max:255',
             'DOB' => 'required|date',
             'gender' => 'required|string|in:Male,Female,Other',
@@ -33,6 +36,7 @@ class TeacherController extends Controller
         ]);
 
         $teacher = new Teacher();
+        $teacher->register_id = $request->register_id;
         $teacher->fullName = $request->fullName;
         $teacher->DOB = $request->DOB;
         $teacher->gender = $request->gender;

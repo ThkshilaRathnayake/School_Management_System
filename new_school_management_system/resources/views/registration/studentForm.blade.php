@@ -12,6 +12,7 @@
                                 <h5 class="text-muted fw-normal mb-4">Admin Form</h5>
                                 <form class="forms-sample" method="POST" action="{{ route('student.personalDetailsStore') }}">
                                     @csrf
+                                    <input type="hidden" name="register_id" value="{{ request()->register_id }}">
                                     <div class="mb-3">
                                         <label for="fullName" class="form-label">Full Name</label>
                                         <input type="text" class="form-control" name="fullName" id="fullName" placeholder="Full Name">

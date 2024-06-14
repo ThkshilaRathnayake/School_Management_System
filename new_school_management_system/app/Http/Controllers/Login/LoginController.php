@@ -14,7 +14,7 @@ class LoginController extends Controller
         return view('registration.login');
     }
 
-    public function LoginInterface(LoginRequest $request): RedirectResponse {
+    public function LoginInterface(LoginRequest $request): RedirectResponse{
         $request->authenticate();
 
         $request->session()->regenerate();

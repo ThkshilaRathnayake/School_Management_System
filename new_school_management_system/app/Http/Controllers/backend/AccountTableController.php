@@ -4,6 +4,8 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 use App\Models\Admin;
 use App\Models\Teacher;
@@ -37,8 +39,10 @@ class AccountTableController extends Controller
     }
 
     public function AdminStoreData(Request $request){
+        Log::info('Request data:', $request->all());
         // validation
         $request->validate([
+            'register_id' => 'required|exists:registers,id',
             'fullName' => 'required',
             'DOB' => 'required',
             'gender' => 'required',
@@ -49,23 +53,26 @@ class AccountTableController extends Controller
         ]);
 
         // Retrieve the teacher record
-        $admin = Admin::where('employeeID', $request->employeeID)->first();
+        DB::transaction(function () use ($request) {
+            $admin = Admin::where('employeeID', $request->employeeID)->first();
 
-        if ($admin) {
-            // Store the course data in the Course List table
-            AcceptedAdmin::create([
-                'fullName' => $request->fullName,
-                'DOB' => $request->DOB,
-                'gender' => $request->gender,
-                'NICnumber' => $request->NICnumber,
-                'employeeID' => $request->employeeID,
-                'experience' => $request->experience,
-                'qualifications' => $request->qualifications,
-            ]);
+            if ($admin) {
+                // Store the course data in the Course List table
+                AcceptedAdmin::create([
+                    'register_id' => $request->register_id,
+                    'fullName' => $request->fullName,
+                    'DOB' => $request->DOB,
+                    'gender' => $request->gender,
+                    'NICnumber' => $request->NICnumber,
+                    'employeeID' => $request->employeeID,
+                    'experience' => $request->experience,
+                    'qualifications' => $request->qualifications,
+                ]);
 
-            // Delete the original record from the Teacher table
-            $admin->delete();
-        }
+                // Delete the original record from the Teacher table
+                $admin->delete();
+            }
+        });
 
         // Redirect to the course create page
         return redirect()->route('admin.accountList');
@@ -73,8 +80,10 @@ class AccountTableController extends Controller
 
 
     public function TeacherStoreData(Request $request) {
+        Log::info('Request data:', $request->all());
         // validation
         $request->validate([
+            'register_id' => 'required|exists:registers,id',
             'fullName' => 'required',
             'DOB' => 'required',
             'gender' => 'required',
@@ -86,24 +95,27 @@ class AccountTableController extends Controller
         ]);
     
         // Retrieve the teacher record
-        $teacher = Teacher::where('employeeID', $request->employeeID)->first();
-    
-        if ($teacher) {
-            // Store the data in the AcceptedTeacher table
-            AcceptedTeacher::create([
-                'fullName' => $teacher->fullName,
-                'DOB' => $teacher->DOB,
-                'gender' => $teacher->gender,
-                'subject' => $teacher->subject,
-                'NICnumber' => $teacher->NICnumber,
-                'employeeID' => $teacher->employeeID,
-                'experience' => $teacher->experience,
-                'qualifications' => $teacher->qualifications,
-            ]);
-    
-            // Delete the original record from the Teacher table
-            $teacher->delete();
-        }
+        DB::transaction(function () use ($request) {
+            $teacher = Teacher::where('employeeID', $request->employeeID)->first();
+        
+            if ($teacher) {
+                // Store the data in the AcceptedTeacher table
+                AcceptedTeacher::create([
+                    'register_id' => $teacher->register_id,
+                    'fullName' => $teacher->fullName,
+                    'DOB' => $teacher->DOB,
+                    'gender' => $teacher->gender,
+                    'subject' => $teacher->subject,
+                    'NICnumber' => $teacher->NICnumber,
+                    'employeeID' => $teacher->employeeID,
+                    'experience' => $teacher->experience,
+                    'qualifications' => $teacher->qualifications,
+                ]);
+        
+                // Delete the original record from the Teacher table
+                $teacher->delete();
+            }
+        });
     
         // Redirect to the account list page
         return redirect()->route('admin.accountList');
@@ -111,8 +123,10 @@ class AccountTableController extends Controller
     
 
     public function StudentStoreData(Request $request){
+        Log::info('Request data:', $request->all());
         // validation
         $request->validate([
+            'register_id' => 'required|exists:registers,id',
             'fullName' => 'required',
             'DOB' => 'required',
             'gender' => 'required',
@@ -122,22 +136,25 @@ class AccountTableController extends Controller
         ]);
 
         // Retrieve the teacher record
-        $student = Student::where('studentID', $request->studentID)->first();
+        DB::transaction(function () use ($request) {
+            $student = Student::where('studentID', $request->studentID)->first();
 
-        if ($student) {
-            // Store the course data in the Course List table
-            AcceptedStudent::create([
-                'fullName' => $request->fullName,
-                'DOB' => $request->DOB,
-                'gender' => $request->gender,
-                'grade' => $request->grade,
-                'studentID' => $request->studentID,
-                'activities' => $request->activities,
-            ]);
+            if ($student) {
+                // Store the course data in the Course List table
+                AcceptedStudent::create([
+                    'register_id' => $request->register_id,
+                    'fullName' => $request->fullName,
+                    'DOB' => $request->DOB,
+                    'gender' => $request->gender,
+                    'grade' => $request->grade,
+                    'studentID' => $request->studentID,
+                    'activities' => $request->activities,
+                ]);
 
-            // Delete the original record from the Teacher table
-            $student->delete();
-        }
+                // Delete the original record from the Teacher table
+                $student->delete();
+            }
+        });
 
         // Redirect to the course create page
         return redirect()->route('admin.accountList');
@@ -150,6 +167,7 @@ class AccountTableController extends Controller
 
         // Store the course data in the Deleted Course table
         DeletedNewAdmin::create([
+            'register_id' => $administrators->register_id,
             'fullName' => $administrators->fullName,
             'DOB' => $administrators->DOB,
             'gender' => $administrators->gender,
@@ -173,6 +191,7 @@ class AccountTableController extends Controller
 
         // Store the course data in the Deleted Course table
         DeletedNewTeacher::create([
+            'register_id' => $teachers->register_id,
             'fullName' => $teachers->fullName,
             'DOB' => $teachers->DOB,
             'gender' => $teachers->gender,
@@ -197,6 +216,7 @@ class AccountTableController extends Controller
 
         // Store the course data in the Deleted Course table
         DeletedNewStudent::create([
+            'register_id' => $students->register_id,
             'fullName' => $students->fullName,
             'DOB' => $students->DOB,
             'gender' => $students->gender,

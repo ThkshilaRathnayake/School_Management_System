@@ -10,6 +10,7 @@ class Teacher extends Model
     use HasFactory;
 
     protected $fillable = [
+        'register_id',
         'fullName',
         'DOB',
         'gender',
@@ -19,4 +20,9 @@ class Teacher extends Model
         'experience',
         'qualifications',
     ];
+
+    public function register()
+    {
+        return $this->belongsTo(Register::class);
+    }
 }
