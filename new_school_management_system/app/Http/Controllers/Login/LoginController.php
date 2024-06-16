@@ -16,7 +16,6 @@ class LoginController extends Controller
 
     public function LoginInterface(LoginRequest $request): RedirectResponse{
         $request->authenticate();
-
         $request->session()->regenerate();
 
         $role = $request->user()->role;  // Accessing the authenticated user's role

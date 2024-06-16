@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('employeeID')->unique();
             $table->string('experience');
             $table->string('qualifications');
+            $table->string('status')->default('accepted');
             $table->timestamps();
 
             $table->foreign('register_id')->references('id')->on('registers')->onDelete('cascade');

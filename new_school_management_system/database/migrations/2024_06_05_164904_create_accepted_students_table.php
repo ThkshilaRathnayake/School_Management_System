@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('grade');
             $table->string('studentID')->unique();
             $table->json('activities');
+            $table->string('status')->default('accepted');
             $table->timestamps();
 
             $table->foreign('register_id')->references('id')->on('registers')->onDelete('cascade');
