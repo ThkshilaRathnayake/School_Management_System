@@ -40,4 +40,9 @@ class Register extends Authenticatable
     {
         return $this->hasOne(Student::class);
     }
+
+    public function teacherForCourses()
+    {
+        return $this->hasMany(TeacherForCourse::class, 'teacher_id');
+    }
 }

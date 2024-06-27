@@ -15,5 +15,10 @@ class CourseTable extends Model
         'courseCode',
         'description',
     ];
+
+    public function teacherForCourses()
+    {
+        return $this->hasMany(TeachersForCourse::class);
+    }
     
 }
